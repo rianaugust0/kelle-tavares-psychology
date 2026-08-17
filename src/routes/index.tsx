@@ -1,24 +1,74 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { Hero } from "@/components/Hero";
+import { About } from "@/components/About";
+import { Services } from "@/components/Services";
+import { EditorialQuote } from "@/components/EditorialQuote";
+import { Career } from "@/components/Career";
+import { TherapyProcess } from "@/components/TherapyProcess";
+import { Modality } from "@/components/Modality";
+import { ContentPreview } from "@/components/ContentPreview";
+import { FAQ } from "@/components/FAQ";
+import { Contact } from "@/components/Contact";
+import { Footer } from "@/components/Footer";
+import { site } from "@/config/site";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "Kelle Tavares | Psicóloga em Goiânia";
+const DESCRIPTION =
+  "Conheça o trabalho da psicóloga Kelle Tavares, sua trajetória profissional e informações sobre acompanhamento psicológico infantil e psicoterapia para adultos.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: site.name,
+          jobTitle: "Psicóloga",
+          address: { "@type": "PostalAddress", addressLocality: "Goiânia", addressRegion: "GO", addressCountry: "BR" },
+          knowsAbout: [
+            "Psicoterapia para adultos",
+            "Acompanhamento psicológico infantil",
+            "Análise do Comportamento Aplicada",
+            "Neuropsicologia",
+          ],
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <EditorialQuote />
+        <Career />
+        <TherapyProcess />
+        <Modality />
+        <ContentPreview />
+        <FAQ />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
