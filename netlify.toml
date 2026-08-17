@@ -1,9 +1,10 @@
 [build]
-  command = "npm install --legacy-peer-deps && npx vite build"
+  command = "npm install --legacy-peer-deps && npm run build:dev"
   publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[redirects]]
   from = "/*"
