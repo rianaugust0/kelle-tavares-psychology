@@ -1,10 +1,9 @@
 [build]
-  command = "npm run build"
+  command = "bun run build"
   publish = ".output/public"
 
 [build.environment]
-  NODE_VERSION = "20"
-  NPM_FLAGS = "--legacy-peer-deps"
+  BUN_VERSION = "latest"
 
 [[redirects]]
   from = "/*"
