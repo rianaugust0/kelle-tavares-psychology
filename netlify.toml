@@ -1,9 +1,9 @@
 [build]
-  command = "bun run --bun vite build"
+  command = "npm install --legacy-peer-deps && npx vite build"
   publish = ".output/public"
 
 [build.environment]
-  BUN_VERSION = "latest"
+  NODE_VERSION = "20"
 
 [[redirects]]
   from = "/*"
