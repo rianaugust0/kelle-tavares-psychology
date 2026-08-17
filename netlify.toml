@@ -1,5 +1,5 @@
 [build]
-  command = "bun run build"
+  command = "bun run --bun vite build"
   publish = ".output/public"
 
 [build.environment]
