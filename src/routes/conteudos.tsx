@@ -3,27 +3,27 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Reveal } from "@/components/Reveal";
 import { articles } from "@/data/articles";
+import { seoConfig } from "@/config/site";
+
+const seo = seoConfig.conteudos;
 
 export const Route = createFileRoute("/conteudos")({
   head: () => ({
     meta: [
-      { title: "Conteúdos | Kelle Tavares, Psicóloga em Goiânia" },
-      {
-        name: "description",
-        content:
-          "Reflexões sobre comportamento, desenvolvimento, relações e saúde mental escritas pela psicóloga Kelle Tavares.",
-      },
-      { property: "og:title", content: "Conteúdos | Kelle Tavares, Psicóloga" },
-      {
-        property: "og:description",
-        content:
-          "Reflexões sobre comportamento, desenvolvimento, relações e saúde mental escritas pela psicóloga Kelle Tavares.",
-      },
+      { title: seo.title },
+      { name: "description", content: seo.description },
+      { property: "og:title", content: seo.title },
+      { property: "og:description", content: seo.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/conteudos" },
+      { property: "og:url", content: seo.canonical },
+      { property: "og:image", content: seo.ogImage },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: seo.title },
+      { name: "twitter:description", content: seo.description },
+      { name: "twitter:image", content: seo.ogImage },
     ],
-    links: [{ rel: "canonical", href: "/conteudos" }],
+    links: [{ rel: "canonical", href: seo.canonical }],
   }),
   component: ConteudosPage,
 });

@@ -5,27 +5,52 @@ import { Reveal } from "@/components/Reveal";
 import { PhotoFrame } from "@/components/PhotoPlaceholder";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { site, faqAdultos, processStepsAdultos } from "@/config/site";
+import { site, faqAdultos, processStepsAdultos, seoConfig, absoluteUrl } from "@/config/site";
 import portrait from "@/assets/kelle-1.png";
 import aboutPhoto from "@/assets/kelle-2.png";
 
-const TITLE = "Psicoterapia para Adultos | Kelle Tavares";
-const DESCRIPTION =
-  "Conheça informações sobre psicoterapia para adultos com a psicóloga Kelle Tavares e saiba como funciona o atendimento online.";
+const seo = seoConfig.adultos;
 
 export const Route = createFileRoute("/adultos")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      { title: seo.title },
+      { name: "description", content: seo.description },
+      { property: "og:title", content: seo.title },
+      { property: "og:description", content: seo.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/adultos" },
+      { property: "og:url", content: seo.canonical },
+      { property: "og:image", content: seo.ogImage },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: seo.title },
+      { name: "twitter:description", content: seo.description },
+      { name: "twitter:image", content: seo.ogImage },
     ],
-    links: [{ rel: "canonical", href: "/adultos" }],
+    links: [{ rel: "canonical", href: seo.canonical }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: "Psicoterapia para Adultos",
+          provider: {
+            "@type": "Person",
+            name: site.name,
+            jobTitle: "Psicóloga",
+            url: site.url,
+          },
+          serviceType: "Psicoterapia Individual para Adultos",
+          description: seo.description,
+          url: seo.canonical,
+          areaServed: {
+            "@type": "Country",
+            name: "Brasil",
+          },
+        }),
+      },
+    ],
   }),
   component: AdultosPage,
 });

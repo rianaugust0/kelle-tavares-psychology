@@ -10,25 +10,27 @@ import { Modality } from "@/components/Modality";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { site } from "@/config/site";
+import { site, seoConfig, absoluteUrl } from "@/config/site";
 
-const TITLE = "Kelle Tavares | Psicóloga";
-const DESCRIPTION =
-  "Conheça o trabalho da psicóloga Kelle Tavares, informações sobre psicoterapia para adultos, acompanhamento psicológico infantil e atendimento online.";
+const seo = seoConfig.home;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: TITLE },
-      { name: "description", content: DESCRIPTION },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESCRIPTION },
+      { title: seo.title },
+      { name: "description", content: seo.description },
+      { property: "og:title", content: seo.title },
+      { property: "og:description", content: seo.description },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: seo.canonical },
+      { property: "og:image", content: seo.ogImage },
       { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: seo.title },
+      { name: "twitter:description", content: seo.description },
+      { name: "twitter:image", content: seo.ogImage },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: seo.canonical }],
     scripts: [
       {
         type: "application/ld+json",
@@ -37,12 +39,21 @@ export const Route = createFileRoute("/")({
           "@type": "Person",
           name: site.name,
           jobTitle: "Psicóloga",
-          address: { "@type": "PostalAddress", addressLocality: "Goiânia", addressRegion: "GO", addressCountry: "BR" },
+          description: seo.description,
+          url: seo.canonical,
+          image: absoluteUrl("/og-image.jpg"),
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Goiânia",
+            addressRegion: "GO",
+            addressCountry: "BR",
+          },
           knowsAbout: [
             "Psicoterapia para adultos",
             "Acompanhamento psicológico infantil",
-            "Análise do Comportamento Aplicada",
+            "Análise do Comportamento Aplicada (ABA)",
             "Neuropsicologia",
+            "Desenvolvimento Infantil",
           ],
         }),
       },

@@ -3,6 +3,50 @@
  * Nunca duplicar estas informações em componentes.
  */
 
+export const SITE_URL =
+  (typeof process !== "undefined" && process.env.VITE_SITE_URL) ||
+  (typeof import.meta !== "undefined" && import.meta.env?.VITE_SITE_URL) ||
+  "https://kelletavares.com.br";
+
+export function absoluteUrl(path: string = "/") {
+  const cleanBase = SITE_URL.replace(/\/+$/, "");
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
+  return `${cleanBase}${cleanPath}`;
+}
+
+export const DEFAULT_OG_IMAGE = absoluteUrl("/og-image.jpg");
+
+export const seoConfig = {
+  home: {
+    title: "Kelle Tavares | Psicóloga em Goiânia e Atendimento Online",
+    description:
+      "Conheça o trabalho da psicóloga Kelle Tavares, CRP 21419. Psicoterapia para adultos, acompanhamento psicológico infantil e atendimento online.",
+    canonical: absoluteUrl("/"),
+    ogImage: DEFAULT_OG_IMAGE,
+  },
+  adultos: {
+    title: "Psicoterapia para Adultos Online | Kelle Tavares",
+    description:
+      "Conheça a psicoterapia para adultos com Kelle Tavares, psicóloga CRP 21419. Saiba como funciona o atendimento psicológico online.",
+    canonical: absoluteUrl("/adultos"),
+    ogImage: DEFAULT_OG_IMAGE,
+  },
+  infantil: {
+    title: "Psicóloga Infantil em Goiânia | Kelle Tavares",
+    description:
+      "Conheça o acompanhamento psicológico infantil com Kelle Tavares, psicóloga CRP 21419, sua formação, experiência profissional e formas de atendimento.",
+    canonical: absoluteUrl("/infantil"),
+    ogImage: DEFAULT_OG_IMAGE,
+  },
+  conteudos: {
+    title: "Conteúdos e Artigos | Kelle Tavares, Psicóloga",
+    description:
+      "Reflexões sobre comportamento, desenvolvimento, relações e saúde mental escritas pela psicóloga Kelle Tavares, CRP 21419.",
+    canonical: absoluteUrl("/conteudos"),
+    ogImage: DEFAULT_OG_IMAGE,
+  },
+} as const;
+
 const WHATSAPP_NUMBER = "5562995543365"; // +55 62 9554-3365
 
 export const WHATSAPP_MESSAGES = {
@@ -29,6 +73,7 @@ export const site = {
   professionalTitle: "Psicóloga",
   crp: "21419",
   city: "Goiânia — GO",
+  url: SITE_URL,
   whatsappUrl: WHATSAPP_URL,
   whatsappMessage: WHATSAPP_MESSAGES.home,
   instagramUrl: INSTAGRAM_URL,
