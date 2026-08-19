@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "17dvAP5urfrElPWu7bmqaW8nYz3TOQ85pH23cx9dLGo" },
       { name: "robots", content: "index, follow" },
       { name: "theme-color", content: "#F7F3EF" },
       { name: "author", content: "Kelle Tavares" },
