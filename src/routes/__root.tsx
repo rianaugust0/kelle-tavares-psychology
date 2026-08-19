@@ -112,9 +112,22 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { initGA, trackPageView } from "@/lib/analytics";
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const routerState = useRouter();
+
+  // Inicializa a Google Tag do GA4 uma única vez
+  useEffect(() => {
+    initGA();
+  }, []);
+
+  // Monitora mudanças de rota da SPA e dispara page_view sem duplicações
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    trackPageView(currentPath, document.title);
+  }, [routerState.state.location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>

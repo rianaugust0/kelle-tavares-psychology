@@ -1,16 +1,25 @@
-﻿import { useRouterState } from "@tanstack/react-router";
+import { useRouterState } from "@tanstack/react-router";
 import { getWhatsAppUrl, type WhatsAppTarget } from "@/config/site";
-import { track } from "@/lib/analytics";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export function FloatingWhatsApp() {
   const routerState = useRouterState();
   const path = routerState.location.pathname;
 
   let target: WhatsAppTarget = "home";
+  let pageName = "home";
+  let serviceCategory: "adultos" | "infantil" | "geral" = "geral";
+
   if (path.includes("adultos")) {
     target = "adultos";
+    pageName = "adultos";
+    serviceCategory = "adultos";
   } else if (path.includes("infantil")) {
     target = "infantil";
+    pageName = "infantil";
+    serviceCategory = "infantil";
+  } else if (path.includes("conteudos")) {
+    pageName = "conteudos";
   }
 
   const url = getWhatsAppUrl(target);
@@ -21,7 +30,13 @@ export function FloatingWhatsApp() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => track("whatsapp_floating_click")}
+        onClick={() =>
+          trackWhatsAppClick({
+            page: pageName,
+            position: "floating",
+            service: serviceCategory,
+          })
+        }
         aria-label="Conversar com Kelle Tavares pelo WhatsApp"
         className="group relative flex items-center justify-center size-14 md:size-15 rounded-full bg-[#25D366] text-white shadow-xl transition-all duration-300 hover:scale-105 hover:bg-[#20bd5a] hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
       >

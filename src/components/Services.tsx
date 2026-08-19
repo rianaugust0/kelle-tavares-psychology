@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { track } from "@/lib/analytics";
+import { trackAdultServiceClick, trackChildServiceClick } from "@/lib/analytics";
 import { Reveal } from "./Reveal";
 
 export function Services() {
@@ -38,7 +38,7 @@ export function Services() {
             <div className="mt-10 pt-6 border-t border-border/60 flex items-center justify-between">
               <Link
                 to="/adultos"
-                onClick={() => track("adult_service_click")}
+                onClick={() => trackAdultServiceClick("services_card")}
                 className="inline-flex items-center gap-2 text-[0.8rem] font-bold tracking-[0.16em] uppercase text-foreground transition-colors duration-200 hover:text-terracotta"
               >
                 Conhecer o atendimento <span>→</span>
@@ -63,7 +63,7 @@ export function Services() {
             <div className="mt-10 pt-6 border-t border-border/60 flex items-center justify-between">
               <Link
                 to="/infantil"
-                onClick={() => track("child_service_click")}
+                onClick={() => trackChildServiceClick("services_card")}
                 className="inline-flex items-center gap-2 text-[0.8rem] font-bold tracking-[0.16em] uppercase text-foreground transition-colors duration-200 hover:text-terracotta"
               >
                 Conhecer o atendimento <span>→</span>

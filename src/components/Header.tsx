@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { site } from "@/config/site";
 import { WhatsAppLink } from "./WhatsAppLink";
+import { trackAdultServiceClick, trackChildServiceClick } from "@/lib/analytics";
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -81,6 +82,13 @@ export function Header() {
                         <Link
                           key={child.href}
                           to={child.href}
+                          onClick={() => {
+                            if (child.href === "/adultos") {
+                              trackAdultServiceClick("header_dropdown");
+                            } else if (child.href === "/infantil") {
+                              trackChildServiceClick("header_dropdown");
+                            }
+                          }}
                           className="block rounded-xs px-3 py-2.5 text-[0.82rem] text-taupe transition-colors hover:bg-blush/40 hover:text-foreground"
                         >
                           {child.label}
@@ -147,14 +155,20 @@ export function Header() {
               <p className="label-caps font-semibold text-terracotta">Atendimentos</p>
               <Link
                 to="/adultos"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  trackAdultServiceClick("header_mobile");
+                  setOpen(false);
+                }}
                 className="font-serif text-[1.5rem] text-foreground/90 pl-3 hover:text-terracotta transition-colors"
               >
                 Psicoterapia para Adultos
               </Link>
               <Link
                 to="/infantil"
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  trackChildServiceClick("header_mobile");
+                  setOpen(false);
+                }}
                 className="font-serif text-[1.5rem] text-foreground/90 pl-3 hover:text-terracotta transition-colors"
               >
                 Acompanhamento Infantil
