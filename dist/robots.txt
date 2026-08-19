@@ -2,4 +2,4 @@
 Allow: /
 
 # Sitemap
-Sitemap: https://kelletavares.com.br/sitemap.xml
+Sitemap: https://kellepsitavares.netlify.app/sitemap.xml
