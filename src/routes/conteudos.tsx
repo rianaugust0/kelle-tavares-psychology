@@ -10,6 +10,7 @@ const seo = seoConfig.conteudos;
 export const Route = createFileRoute("/conteudos")({
   head: () => ({
     meta: [
+      { name: "robots", content: "noindex, follow" },
       { title: seo.title },
       { name: "description", content: seo.description },
       { property: "og:title", content: seo.title },
