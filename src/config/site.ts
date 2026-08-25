@@ -27,7 +27,7 @@ export const seoConfig = {
   adultos: {
     title: "Psicoterapia para Adultos Online | Kelle Tavares",
     description:
-      "Conheça a psicoterapia para adultos com Kelle Tavares, psicóloga CRP 21419. Saiba como funciona o atendimento psicológico online.",
+      "Psicoterapia para adultos com Kelle Tavares, psicóloga em Goiânia. Atendimento psicológico online com escuta profissional, acolhimento e privacidade.",
     canonical: absoluteUrl("/adultos"),
     ogImage: DEFAULT_OG_IMAGE,
   },

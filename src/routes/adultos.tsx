@@ -5,9 +5,10 @@ import { Reveal } from "@/components/Reveal";
 import { PhotoFrame } from "@/components/PhotoPlaceholder";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { site, faqAdultos, processStepsAdultos, seoConfig, absoluteUrl } from "@/config/site";
+import { site, seoConfig } from "@/config/site";
 import portrait from "@/assets/kelle-1.png";
 import aboutPhoto from "@/assets/kelle-2.png";
+import onlinePhoto from "@/assets/kelle-4.png";
 
 const seo = seoConfig.adultos;
 
@@ -34,14 +35,14 @@ export const Route = createFileRoute("/adultos")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Service",
-          name: "Psicoterapia para Adultos",
+          name: "Psicoterapia para Adultos Online",
           provider: {
             "@type": "Person",
             name: site.name,
             jobTitle: "Psicóloga",
             url: site.url,
           },
-          serviceType: "Psicoterapia Individual para Adultos",
+          serviceType: "Psicoterapia Individual para Adultos Online",
           description: seo.description,
           url: seo.canonical,
           areaServed: {
@@ -56,18 +57,85 @@ export const Route = createFileRoute("/adultos")({
 });
 
 function AdultosPage() {
-  const pilares = [
-    { num: "01", title: "Emoções e angústias", desc: "Compreender sentimentos difíceis e reações que geram incômodo." },
-    { num: "02", title: "Relações e vínculos", desc: "Refletir sobre dinâmicas afetivas e limites saudáveis." },
-    { num: "03", title: "Padrões repetitivos", desc: "Identificar ciclos cotidianos que trazem frustração." },
-    { num: "04", title: "Transições de vida", desc: "Apoio para atravessar mudanças, escolhas e novos momentos." },
+  const temas = [
+    {
+      num: "01",
+      title: "Ansiedade e preocupações",
+      desc: "Compreender pensamentos acelerados, apreensões constantes e o impacto das incertezas no dia a dia.",
+    },
+    {
+      num: "02",
+      title: "Sobrecarga emocional",
+      desc: "Espaço para acolher o cansaço mental, o acúmulo de exigências e a sensação de estar no limite.",
+    },
+    {
+      num: "03",
+      title: "Autoestima e autoconhecimento",
+      desc: "Aprofundar a relação consigo mesmo, reconhecendo necessidades, limites e formas mais gentis de se perceber.",
+    },
+    {
+      num: "04",
+      title: "Relacionamentos e limites",
+      desc: "Refletir sobre dinâmicas interpessoais, conflitos afetivos, convivência familiar e posicionamento nos vínculos.",
+    },
+    {
+      num: "05",
+      title: "Transições e mudanças de vida",
+      desc: "Apoio para atravessar momentos de transição pessoal, decisões profissionais ou reconfigurações na rotina.",
+    },
+    {
+      num: "06",
+      title: "Dificuldades emocionais",
+      desc: "Escuta atenta para momentos de desânimo, conflitos internos ou necessidade de reorganizar sentimentos.",
+    },
+  ];
+
+  const passos = [
+    {
+      index: "01",
+      title: "Primeiro contato",
+      text: "Envie uma mensagem pelo WhatsApp para tirar dúvidas iniciais e conversar sobre a disponibilidade de horários.",
+    },
+    {
+      index: "02",
+      title: "Primeiro encontro",
+      text: "Um espaço de acolhimento e escuta sem julgamentos para compreender o seu momento e o que você busca.",
+    },
+    {
+      index: "03",
+      title: "Continuidade e frequência",
+      text: "O acompanhamento é individual, respeitando a sua singularidade. Frequência e planejamento são alinhados caso a caso.",
+    },
+  ];
+
+  const faqAdultosList = [
+    {
+      q: "Como funciona a psicoterapia para adultos?",
+      a: "A psicoterapia é um processo individual e ético de escuta e reflexão. Em cada sessão, trabalhamos as questões trazidas por você — sentimentos, relações, dúvidas e experiências — com respeito ao seu ritmo e sem julgamentos.",
+    },
+    {
+      q: "Como funciona a terapia online?",
+      a: "As sessões acontecem por videochamada em plataforma segura e sigilosa. O paciente pode participar com privacidade e conforto de onde estiver, precisando apenas de uma conexão estável à internet e um ambiente reservado.",
+    },
+    {
+      q: "Preciso estar passando por um problema grave para procurar um psicólogo?",
+      a: "Não. A psicoterapia acolhe desde a busca por autoconhecimento e apoio em transições de vida até momentos de angústia, ansiedade ou sobrecarga. Não é necessário esperar um sofrimento intenso para iniciar o cuidado.",
+    },
+    {
+      q: "Qual é a duração das sessões?",
+      a: "As sessões têm duração média de 50 minutos, acontecendo em dias e horários previamente combinados entre a psicóloga e o paciente.",
+    },
+    {
+      q: "Como faço para conversar sobre disponibilidade de horários?",
+      a: "Basta clicar em um dos botões de WhatsApp nesta página para enviar uma mensagem. Conversaremos de forma simples sobre as opções de horários e esclareceremos as dúvidas que você tiver.",
+    },
   ];
 
   return (
     <>
       <Header />
       <main>
-        {/* CAPÍTULO 1: MARFIM — HERO SOFISTICADO */}
+        {/* HERO SOFISTICADO */}
         <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-ivory overflow-hidden">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-rose/15 rounded-full blur-3xl pointer-events-none -z-10" />
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
@@ -75,15 +143,15 @@ function AdultosPage() {
               <Reveal>
                 <div className="flex items-center gap-3">
                   <span className="h-px w-8 bg-terracotta" />
-                  <p className="eyebrow text-terracotta font-semibold">Psicoterapia para adultos</p>
+                  <p className="eyebrow text-terracotta font-semibold">Atendimento Individual</p>
                 </div>
 
-                <h1 className="mt-6 text-[2.7rem] leading-[1.06] text-foreground sm:text-[3.5rem] lg:text-[4.2rem] font-light">
-                  Um espaço para olhar com mais <span className="italic font-normal text-terracotta">cuidado</span> para aquilo que você tem vivido.
+                <h1 className="mt-6 text-[2.4rem] leading-[1.1] text-foreground sm:text-[3.2rem] lg:text-[3.8rem] font-light">
+                  Psicoterapia para adultos online
                 </h1>
 
                 <p className="mt-6 max-w-xl text-[1.1rem] leading-relaxed text-taupe font-normal">
-                  A psicoterapia pode oferecer um espaço de escuta e reflexão para compreender experiências, emoções, relações e diferentes momentos da vida.
+                  Um espaço de escuta e cuidado para compreender emoções, relações e os desafios vividos em diferentes momentos da vida.
                 </p>
 
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -93,7 +161,7 @@ function AdultosPage() {
                     event="whatsapp_adult_hero_click"
                     className="bg-foreground text-primary-foreground px-8 py-4 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition-all duration-300 hover:bg-terracotta hover:text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    Conversar sobre atendimento →
+                    Quero saber sobre o atendimento
                   </WhatsAppLink>
                 </div>
 
@@ -109,7 +177,7 @@ function AdultosPage() {
                 <div className="relative p-3 bg-warm-white border border-border/80 shadow-lg">
                   <PhotoFrame
                     src={portrait}
-                    alt="Retrato de Kelle Tavares, psicóloga"
+                    alt="Retrato de Kelle Tavares, psicóloga para adultos"
                     width={912}
                     height={1200}
                     priority
@@ -123,35 +191,36 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2: ROSÉ — IDENTIFICAÇÃO EDITORIAL (COMPOSIÇÃO ASSIMÉTRICA COM NÚMEROS) */}
+        {/* SEÇÃO: QUANDO A PSICOTERAPIA PODE AJUDAR */}
         <section className="py-24 md:py-32 border-t border-border bg-blush/45">
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
             <Reveal>
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-terracotta" />
-                <p className="eyebrow text-terracotta font-semibold">Identificação e ponto de partida</p>
+                <p className="eyebrow text-terracotta font-semibold">Indicações e acolhimento</p>
               </div>
               
-              <h2 className="mt-6 font-serif text-[2.5rem] leading-[1.12] text-foreground sm:text-[3.4rem] max-w-3xl">
-                Nem sempre é preciso saber exatamente o que dizer para começar.
+              <h2 className="mt-6 font-serif text-[2.3rem] leading-[1.15] text-foreground sm:text-[3.2rem] max-w-3xl">
+                Quando a psicoterapia pode ajudar?
               </h2>
               
-              <div className="mt-6 space-y-4 text-[1.1rem] leading-relaxed text-taupe max-w-3xl">
+              <div className="mt-6 space-y-4 text-[1.05rem] leading-relaxed text-taupe max-w-3xl">
                 <p>
-                  Algumas pessoas chegam à psicoterapia porque algo está incomodando. Outras percebem padrões que se repetem, atravessam mudanças ou simplesmente desejam compreender melhor a própria história.
+                  Diferentes situações e fases da vida podem nos convidar a buscar acompanhamento profissional.
+                  Não é necessário esperar uma crise ou um sofrimento extremo para iniciar o processo terapêutico.
                 </p>
-                <p className="text-foreground/90 font-medium font-serif text-[1.25rem]">
-                  O ponto de partida não precisa estar completamente organizado. Ele pode ser construído ao longo do processo.
+                <p className="text-foreground/90 font-medium font-serif text-[1.2rem]">
+                  A psicoterapia é um suporte ético para quem deseja compreender melhor a si mesmo e encontrar caminhos mais conscientes:
                 </p>
               </div>
 
-              {/* 4 Pilares Editoriais Serifados */}
-              <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 pt-8 border-t border-terracotta/25">
-                {pilares.map((item) => (
-                  <div key={item.num} className="p-5 bg-warm-white/75 border border-border/60">
-                    <span className="font-serif text-[1.3rem] text-terracotta font-semibold block">{item.num}</span>
-                    <h3 className="font-serif text-[1.35rem] text-foreground font-medium mt-1">{item.title}</h3>
-                    <p className="text-[0.84rem] text-taupe mt-1.5 leading-snug">{item.desc}</p>
+              {/* Grid elegante de temas de cuidado */}
+              <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 pt-8 border-t border-terracotta/25">
+                {temas.map((item) => (
+                  <div key={item.num} className="p-6 bg-warm-white/85 border border-border/60 transition-all duration-300 hover:border-terracotta/40">
+                    <span className="font-serif text-[1.2rem] text-terracotta font-semibold block">{item.num}</span>
+                    <h3 className="font-serif text-[1.35rem] text-foreground font-medium mt-2">{item.title}</h3>
+                    <p className="text-[0.92rem] text-taupe mt-2.5 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
@@ -159,34 +228,37 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3: MARFIM — COMO FUNCIONA */}
-        <section className="border-t border-border py-20 md:py-24 bg-ivory">
+        {/* SEÇÃO: COMO FUNCIONA O ATENDIMENTO */}
+        <section className="border-t border-border py-20 md:py-28 bg-ivory">
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
             <Reveal className="max-w-2xl">
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-terracotta" />
-                <p className="eyebrow text-terracotta font-semibold">O processo</p>
+                <p className="eyebrow text-terracotta font-semibold">O processo terapêutico</p>
               </div>
               <h2 className="mt-5 text-[2.2rem] leading-tight text-foreground sm:text-[2.9rem]">
                 Como funciona o acompanhamento
               </h2>
+              <p className="mt-4 text-[1.02rem] leading-relaxed text-taupe">
+                Um acompanhamento individual e confidencial, centrado na sua realidade e construído com respeito ao seu tempo.
+              </p>
             </Reveal>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {processStepsAdultos.map((step, i) => (
-                <Reveal key={step.index} delay={i * 90} className="p-6 md:p-7 bg-warm-white border border-border/80 shadow-xs flex flex-col justify-between transition-all duration-300 hover:border-terracotta/40 hover:-translate-y-0.5">
+            <div className="mt-14 grid gap-8 md:grid-cols-3">
+              {passos.map((step, i) => (
+                <Reveal key={step.index} delay={i * 90} className="p-7 md:p-8 bg-warm-white border border-border/80 shadow-xs flex flex-col justify-between transition-all duration-300 hover:border-terracotta/40 hover:-translate-y-0.5">
                   <div>
-                    <span className="font-serif text-[2.1rem] text-terracotta font-light">
+                    <span className="font-serif text-[2.2rem] text-terracotta font-light">
                       {step.index}
                     </span>
-                    <h3 className="mt-3 text-[1.4rem] text-foreground font-serif">
+                    <h3 className="mt-3 text-[1.45rem] text-foreground font-serif">
                       {step.title}
                     </h3>
-                    <p className="mt-2 text-[0.94rem] leading-relaxed text-taupe">
+                    <p className="mt-3 text-[0.96rem] leading-relaxed text-taupe">
                       {step.text}
                     </p>
                   </div>
-                  <div className="mt-6 pt-3 border-t border-border/50">
+                  <div className="mt-8 pt-4 border-t border-border/50">
                     <span className="h-0.5 w-6 bg-terracotta/40 block" />
                   </div>
                 </Reveal>
@@ -195,12 +267,67 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4: CAFÉ — MOMENTO DE IMPACTO EDITORIAL */}
+        {/* SEÇÃO: PSICOTERAPIA ONLINE */}
+        <section className="border-t border-border/60 py-20 md:py-28 bg-warm-white">
+          <div className="mx-auto max-w-[1240px] px-6 md:px-10">
+            <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 items-center">
+              <Reveal>
+                <div className="flex items-center gap-3">
+                  <span className="h-px w-8 bg-terracotta" />
+                  <p className="eyebrow text-terracotta font-semibold">Modalidade remota</p>
+                </div>
+                <h2 className="mt-5 text-[2.1rem] leading-tight text-foreground sm:text-[2.8rem]">
+                  Psicoterapia online
+                </h2>
+                <div className="mt-6 space-y-4 text-[1rem] leading-relaxed text-taupe">
+                  <p>
+                    A psicoterapia online permite que as sessões sejam realizadas de forma remota,
+                    com toda a privacidade, acolhimento e rigor ético do atendimento presencial.
+                  </p>
+                  <p>
+                    Você pode participar de um ambiente que lhe seja confortável e seguro, com flexibilidade
+                    de horários e sem a necessidade de deslocamentos na rotina.
+                  </p>
+                  <p className="text-foreground/90 font-medium pt-2">
+                    Kelle Tavares é psicóloga em Goiânia e realiza atendimento psicológico online para adultos de diferentes regiões do Brasil e no exterior.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-border/60">
+                  <WhatsAppLink
+                    location="adultos_online_section"
+                    target="adultos"
+                    event="whatsapp_adult_online_click"
+                    className="inline-flex items-center gap-2 text-[0.8rem] font-bold tracking-[0.16em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                  >
+                    Tirar dúvidas sobre a terapia online <span>→</span>
+                  </WhatsAppLink>
+                </div>
+              </Reveal>
+
+              <Reveal delay={120} className="relative">
+                <div className="relative p-2.5 bg-ivory border border-border/80 shadow-sm">
+                  <PhotoFrame
+                    src={onlinePhoto}
+                    alt="Kelle Tavares durante atendimento psicológico online"
+                    width={600}
+                    height={700}
+                    pending={false}
+                    className="aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] w-full object-cover grayscale-[4%]"
+                  />
+                  <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b border-r border-terracotta/40 pointer-events-none hidden sm:block" />
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        {/* MOMENTO DE IMPACTO EDITORIAL */}
         <section className="bg-coffee py-16 md:py-20 text-ivory border-t border-coffee/20">
           <div className="mx-auto max-w-[940px] px-6 text-center md:px-10">
             <Reveal>
               <p className="eyebrow text-rose font-medium tracking-[0.25em]">Espaço de escuta</p>
-              <blockquote className="mt-5 font-serif text-[1.9rem] leading-[1.2] text-ivory sm:text-[2.5rem] font-light">
+              <blockquote className="mt-5 font-serif text-[1.9rem] leading-[1.25] text-ivory sm:text-[2.5rem] font-light">
                 “A psicoterapia é a oportunidade de olhar para si com tempo, atenção e sem a pressa das respostas prontas.”
               </blockquote>
               <div className="mt-6 flex justify-center">
@@ -210,7 +337,7 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5: MARFIM — SOBRE KELLE (FOTO + BIO) */}
+        {/* SOBRE A PROFISSIONAL (APRESENTAÇÃO CURTA) */}
         <section className="border-t border-border py-20 md:py-26 bg-ivory">
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
             <div className="grid gap-10 lg:grid-cols-[42fr_58fr] lg:gap-16 items-center">
@@ -238,10 +365,10 @@ function AdultosPage() {
                 </h2>
                 <div className="mt-6 space-y-4 text-[1rem] leading-relaxed text-taupe">
                   <p>
-                    Sou psicóloga graduada pela FacUnicamps, comprometida com uma prática clínica ética, reflexiva e fundamentada.
+                    Sou psicóloga em Goiânia, graduada pela Faculdade Unida de Campinas (FacUnicamps) e inscrita no CRP 21419.
                   </p>
                   <p>
-                    Ofereço um espaço profissional de escuta atenta e individualizada, em que cada pessoa pode olhar para sua própria história com acolhimento, respeito ao seu tempo e sem julgamentos.
+                    Ofereço um espaço profissional de escuta atenta, ética e individualizada, em que cada pessoa pode olhar para sua própria história com acolhimento, respeito ao seu ritmo e sem julgamentos.
                   </p>
                   <div className="mt-3 p-3.5 border-l-2 border-terracotta bg-blush/40 text-[0.9rem] text-foreground font-medium">
                     Atendimento online para pacientes em todo o Brasil e exterior • Base profissional em Goiânia — GO
@@ -256,7 +383,7 @@ function AdultosPage() {
                     href="/#trajetoria"
                     className="link-underline text-[0.78rem] font-semibold tracking-[0.16em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
                   >
-                    Conheça minha trajetória →
+                    Conheça minha trajetória completa →
                   </a>
                 </div>
               </Reveal>
@@ -264,7 +391,7 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 6: ROSÉ — FAQ ADULTOS */}
+        {/* FAQ ADULTOS */}
         <section className="border-t border-border py-24 md:py-32 bg-blush/35">
           <div className="mx-auto max-w-[880px] px-6 md:px-10">
             <Reveal>
@@ -273,12 +400,12 @@ function AdultosPage() {
                 <p className="eyebrow text-terracotta font-semibold">Dúvidas frequentes</p>
               </div>
               <h2 className="mt-6 text-[2.2rem] leading-tight text-foreground sm:text-[2.8rem]">
-                Dúvidas comuns sobre o atendimento
+                Dúvidas sobre o atendimento
               </h2>
             </Reveal>
 
             <Accordion type="single" collapsible className="mt-14 divide-y divide-border border-y border-border">
-              {faqAdultos.map((item, i) => (
+              {faqAdultosList.map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-none py-3">
                   <AccordionTrigger className="text-left font-serif text-[1.35rem] font-normal text-foreground hover:no-underline sm:text-[1.5rem]">
                     {item.q}
@@ -292,7 +419,7 @@ function AdultosPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 7: CAFÉ — CONVERSÃO FINAL */}
+        {/* CTA FINAL DE CONVERSÃO */}
         <section className="bg-coffee py-32 text-ivory md:py-40 border-t border-coffee/20 relative overflow-hidden">
           <div className="relative mx-auto max-w-[940px] px-6 text-center md:px-10">
             <Reveal>
@@ -302,12 +429,12 @@ function AdultosPage() {
                 <span className="h-px w-8 bg-rose" />
               </div>
 
-              <h2 className="mt-6 font-serif text-[3rem] leading-[1.06] text-ivory sm:text-[3.8rem] lg:text-[4.6rem]">
-                Podemos conversar sobre o atendimento?
+              <h2 className="mt-6 font-serif text-[2.8rem] leading-[1.08] text-ivory sm:text-[3.6rem] lg:text-[4.2rem]">
+                Quer saber mais sobre o atendimento?
               </h2>
 
-              <p className="mx-auto mt-6 max-w-xl text-[1.1rem] leading-relaxed text-ivory/85">
-                Envie uma mensagem pelo WhatsApp para tirar dúvidas iniciais e verificar disponibilidade de horários.
+              <p className="mx-auto mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ivory/85">
+                Entre em contato para conversar sobre disponibilidade de horários e entender como funciona o atendimento.
               </p>
 
               <div className="mt-12 flex justify-center">
@@ -317,7 +444,7 @@ function AdultosPage() {
                   event="whatsapp_adult_final_click"
                   className="inline-block bg-ivory text-coffee px-12 py-5 text-[0.85rem] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-terracotta hover:text-white shadow-2xl hover:-translate-y-1"
                 >
-                  Conversar com Kelle pelo WhatsApp →
+                  Falar com Kelle
                 </WhatsAppLink>
               </div>
 

@@ -1,0 +1,1 @@
+var e=`/assets/kelle-3-BDQ3HRFj.png`;export{e as t};
