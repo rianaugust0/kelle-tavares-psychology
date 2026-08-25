@@ -168,7 +168,7 @@ function AdultosPage() {
                 <div className="mt-12 pt-8 border-t border-border/80 max-w-sm flex items-center gap-3">
                   <span className="h-2 w-2 rounded-full bg-terracotta/70 animate-pulse" />
                   <p className="text-[0.78rem] tracking-[0.12em] text-foreground/80 uppercase font-semibold">
-                    Atendimento online • CRP {site.crp}
+                    Atendimento online e presencial em Goiânia • CRP {site.crp}
                   </p>
                 </div>
               </Reveal>
@@ -289,7 +289,7 @@ function AdultosPage() {
                     de horários e sem a necessidade de deslocamentos na rotina.
                   </p>
                   <p className="text-foreground/90 font-medium pt-2">
-                    Kelle Tavares é psicóloga em Goiânia e realiza atendimento psicológico online para adultos de diferentes regiões do Brasil e no exterior.
+                    Kelle Tavares é psicóloga em Goiânia e realiza atendimento psicológico online para adultos de diferentes regiões do Brasil.
                   </p>
                 </div>
 
@@ -371,7 +371,7 @@ function AdultosPage() {
                     Ofereço um espaço profissional de escuta atenta, ética e individualizada, em que cada pessoa pode olhar para sua própria história com acolhimento, respeito ao seu ritmo e sem julgamentos.
                   </p>
                   <div className="mt-3 p-3.5 border-l-2 border-terracotta bg-blush/40 text-[0.9rem] text-foreground font-medium">
-                    Atendimento online para pacientes em todo o Brasil e exterior • Base profissional em Goiânia — GO
+                    Atendimento online para pacientes em todo o Brasil • Base profissional em Goiânia — GO
                   </div>
                 </div>
 
