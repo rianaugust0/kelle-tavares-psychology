@@ -15,11 +15,15 @@ export function Hero() {
               <p className="eyebrow">Psicologia • Escuta • Cuidado</p>
             </div>
             
-            <h1 className="mt-6 text-[2.5rem] leading-[1.08] text-foreground sm:text-[3.2rem] lg:text-[4rem]">
-              Um espaço de escuta, compreensão e cuidado.
+            <h1 className="mt-6 text-[2.2rem] font-serif leading-[1.12] text-foreground sm:text-[2.8rem] lg:text-[3.3rem]">
+              Psicóloga em Goiânia e atendimento psicológico online
             </h1>
+
+            <p className="mt-5 font-serif text-[1.4rem] italic leading-snug text-terracotta/95 sm:text-[1.65rem] lg:text-[1.85rem]">
+              Um espaço de escuta, compreensão e cuidado.
+            </p>
             
-            <p className="mt-6 max-w-xl text-[1.05rem] font-medium leading-relaxed text-foreground/90">
+            <p className="mt-5 max-w-xl text-[1.02rem] font-medium leading-relaxed text-foreground/90">
               Psicoterapia para adultos e acompanhamento psicológico infantil, com atendimento online.
             </p>
 
