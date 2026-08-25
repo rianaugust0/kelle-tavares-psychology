@@ -33,17 +33,17 @@ export function About() {
               </h2>
               <div className="mt-8 space-y-6 text-[1rem] leading-relaxed text-taupe">
                 <p>
-                  Sou psicóloga e construí minha trajetória profissional especialmente no
-                  acompanhamento de crianças neurodivergentes, atuando em contextos clínicos e
-                  domiciliares.
+                  Sou psicóloga em Goiânia e realizo atendimentos online e presenciais.
+                  Construí minha trajetória profissional especialmente no acompanhamento
+                  de crianças neurodivergentes, atuando em contextos clínicos e domiciliares.
                 </p>
                 <p>
                   Ao profissionalizar minha atuação e aprofundar meus estudos em comportamento,
                   desenvolvimento e neuropsicologia, busco aplicar abordagens baseadas em evidências
-                  para promover autonomia e qualidade de vida.
+                  para promover autonomia, acolhimento e qualidade de vida.
                 </p>
                 <p>
-                  Minha atuação clínica contempla também a psicoterapia individual de adultos,
+                  Minha atuação clínica contempla também a psicoterapia individual para adultos,
                   mantendo como base uma escuta cuidadosa, responsável e construída a partir
                   da singularidade de cada pessoa.
                 </p>

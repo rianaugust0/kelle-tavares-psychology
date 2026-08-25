@@ -7,23 +7,37 @@ export function Modality() {
   return (
     <section className="bg-warm-white py-16 md:py-24 border-t border-border/40">
       <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20 items-center">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20 items-center">
           <Reveal>
             <div className="flex items-center gap-3">
               <span className="h-px w-6 bg-terracotta/60" />
-              <p className="eyebrow">Modalidade</p>
+              <p className="eyebrow">Modalidades de Atendimento</p>
             </div>
             <h2 className="mt-5 text-[1.8rem] text-foreground sm:text-[2.2rem]">
-              Atendimento online
+              Como acontecem os atendimentos
             </h2>
-            <p className="mt-5 max-w-lg text-[0.98rem] leading-relaxed text-taupe">
-              O atendimento é realizado de forma remota, permitindo que o acompanhamento aconteça com privacidade, conforto e organização.
+            <p className="mt-4 max-w-lg text-[0.98rem] leading-relaxed text-taupe">
+              O acompanhamento psicológico é planejado com responsabilidade, conforto e foco nas necessidades individuais de cada paciente.
             </p>
             
-            <div className="mt-8 border-t border-border/60 pt-6">
-              <p className="label-caps font-semibold">Localização profissional</p>
-              <p className="mt-2 font-serif text-[1.6rem] text-foreground">{site.city}</p>
-              <p className="mt-1 text-[0.85rem] text-taupe">Atendimento online em todo o Brasil.</p>
+            <div className="mt-8 space-y-6 border-t border-border/60 pt-6">
+              <div>
+                <h3 className="label-caps font-semibold text-terracotta">
+                  Atendimento presencial em Goiânia
+                </h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-foreground/90">
+                  Atendimento psicológico presencial em Goiânia, mediante agendamento prévio.
+                </p>
+              </div>
+
+              <div className="border-t border-border/40 pt-5">
+                <h3 className="label-caps font-semibold text-terracotta">
+                  Atendimento online
+                </h3>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-foreground/90">
+                  Atendimento psicológico online com privacidade, acolhimento e flexibilidade, disponível para pacientes de diferentes regiões do Brasil.
+                </p>
+              </div>
             </div>
           </Reveal>
 
