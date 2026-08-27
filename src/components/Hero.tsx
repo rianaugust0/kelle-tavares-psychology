@@ -3,6 +3,7 @@ import portrait from "@/assets/kelle-1.png";
 import { PhotoFrame } from "./PhotoPlaceholder";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
+import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   return (
@@ -40,12 +41,12 @@ export function Hero() {
               >
                 Quero saber sobre atendimento
               </WhatsAppLink>
-              <a
-                href="#sobre"
+              <Link
+                to="/sobre"
                 className="border border-foreground/70 px-7 py-3.5 text-center text-[0.75rem] font-medium tracking-[0.14em] uppercase text-foreground transition-all duration-300 hover:bg-foreground hover:text-primary-foreground"
               >
                 Conheça meu trabalho
-              </a>
+              </Link>
             </div>
 
             <div className="mt-12 pt-8 border-t border-border/60 max-w-sm">

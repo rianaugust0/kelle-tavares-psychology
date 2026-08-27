@@ -100,6 +100,18 @@ export function Header() {
               );
             }
 
+            if (item.href.startsWith("/") && !item.href.includes("#")) {
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="link-underline text-[0.82rem] text-taupe transition-colors hover:text-foreground"
+                >
+                  {item.label}
+                </Link>
+              );
+            }
+
             return (
               <a
                 key={item.href}
@@ -143,13 +155,13 @@ export function Header() {
               Início
             </Link>
             
-            <a
-              href="/#sobre"
+            <Link
+              to="/sobre"
               onClick={() => setOpen(false)}
               className="font-serif text-[1.9rem] text-foreground hover:text-terracotta transition-colors"
             >
               Sobre
-            </a>
+            </Link>
 
             <div className="flex flex-col gap-2.5 border-y border-border/80 py-3.5 my-1">
               <p className="label-caps font-semibold text-terracotta">Atendimentos</p>

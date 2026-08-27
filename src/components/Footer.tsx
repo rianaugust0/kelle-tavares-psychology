@@ -1,5 +1,6 @@
 import { site, INSTAGRAM_URL } from "@/config/site";
 import { track } from "@/lib/analytics";
+import { Link } from "@tanstack/react-router";
 
 export function Footer() {
   return (
@@ -16,12 +17,12 @@ export function Footer() {
         </div>
 
         <nav aria-label="Navegação do rodapé" className="flex flex-wrap gap-x-6 gap-y-2">
-          <a href="/" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
+          <Link to="/" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Início
-          </a>
-          <a href="/#sobre" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
+          </Link>
+          <Link to="/sobre" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Sobre
-          </a>
+          </Link>
           <a href="/adultos" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Psicoterapia para Adultos
           </a>

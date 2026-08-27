@@ -38,6 +38,13 @@ export const seoConfig = {
     canonical: absoluteUrl("/infantil"),
     ogImage: DEFAULT_OG_IMAGE,
   },
+  sobre: {
+    title: "Sobre Kelle Tavares | Psicóloga em Goiânia",
+    description:
+      "Conheça a trajetória de Kelle Tavares, psicóloga em Goiânia (CRP 21419). Formação em Psicologia, pós-graduações, atendimento para adultos, infantil e online.",
+    canonical: absoluteUrl("/sobre"),
+    ogImage: DEFAULT_OG_IMAGE,
+  },
   conteudos: {
     title: "Conteúdos e Artigos | Kelle Tavares, Psicóloga",
     description:
@@ -107,7 +114,7 @@ export const site = {
   ],
   nav: [
     { label: "Início", href: "/" },
-    { label: "Sobre", href: "/#sobre" },
+    { label: "Sobre", href: "/sobre" },
     { 
       label: "Atendimentos", 
       href: "/#atendimentos",

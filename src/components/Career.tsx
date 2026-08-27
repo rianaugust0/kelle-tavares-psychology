@@ -64,7 +64,7 @@ export function Career() {
 
               <div className="pt-4 border-t border-border/60">
                 <Link
-                  to="/infantil"
+                  to="/sobre"
                   className="inline-flex items-center gap-2 text-[0.78rem] font-bold tracking-[0.16em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
                 >
                   Conhecer minha trajetória detalhada <span>→</span>
