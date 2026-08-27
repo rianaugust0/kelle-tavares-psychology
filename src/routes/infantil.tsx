@@ -147,7 +147,7 @@ function InfantilPage() {
     },
     {
       q: "Como conversar sobre disponibilidade de horários?",
-      a: "Basta enviar uma mensagem diretamente pelo WhatsApp. Conversamos sobre as opções de horários do acompanhamento online e organizamos os próximos passos de forma simples.",
+      a: "Basta enviar uma mensagem diretamente pelo WhatsApp. Conversamos sobre as possibilidades de atendimento em Goiânia ou online, conforme a necessidade e disponibilidade.",
     },
   ];
 
@@ -420,14 +420,14 @@ function InfantilPage() {
             <Reveal className="p-8 md:p-12 bg-warm-white border border-border/80 shadow-sm text-center">
               <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-terracotta" />
-                <p className="eyebrow text-terracotta font-semibold">Psicóloga em Goiânia</p>
+                <p className="eyebrow text-terracotta font-semibold">Atendimento em Goiânia</p>
                 <span className="h-px w-8 bg-terracotta" />
               </div>
               <h2 className="mt-4 font-serif text-[2.2rem] leading-tight text-foreground sm:text-[2.8rem]">
-                Acompanhamento infantil com psicóloga em Goiânia
+                Acompanhamento infantil em Goiânia
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-taupe">
-                Kelle Tavares é psicóloga em Goiânia (GO) e realiza acompanhamento psicológico infantil e orientação aos responsáveis na modalidade online.
+                O acompanhamento psicológico infantil pode ser realizado em Goiânia, conforme disponibilidade e modalidade adequada ao atendimento. Entre em contato para conversar sobre as possibilidades.
               </p>
               <p className="mx-auto mt-3 max-w-xl text-[0.92rem] text-taupe/80 italic">
                 Horários, formatos e detalhes do primeiro atendimento são combinados diretamente no contato via WhatsApp.

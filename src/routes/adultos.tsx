@@ -147,11 +147,11 @@ function AdultosPage() {
                 </div>
 
                 <h1 className="mt-6 text-[2.4rem] leading-[1.1] text-foreground sm:text-[3.2rem] lg:text-[3.8rem] font-light">
-                  Psicoterapia para adultos online com psicóloga em Goiânia
+                  Psicoterapia para adultos em Goiânia e online
                 </h1>
 
                 <p className="mt-6 max-w-xl text-[1.1rem] leading-relaxed text-taupe font-normal">
-                  Um espaço de escuta e cuidado para adultos que desejam compreender melhor suas emoções, relações e diferentes momentos da vida, com atendimento psicológico online.
+                  Um espaço de escuta e cuidado para adultos que desejam compreender melhor suas emoções, relações e diferentes momentos da vida, com possibilidades de atendimento em Goiânia e online.
                 </p>
 
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -168,7 +168,7 @@ function AdultosPage() {
                 <div className="mt-12 pt-8 border-t border-border/80 max-w-sm flex items-center gap-3">
                   <span className="h-2 w-2 rounded-full bg-terracotta/70 animate-pulse" />
                   <p className="text-[0.78rem] tracking-[0.12em] text-foreground/80 uppercase font-semibold">
-                    Atendimento online • Psicóloga em Goiânia • CRP {site.crp}
+                    Atendimento em Goiânia e online • CRP {site.crp}
                   </p>
                 </div>
               </Reveal>
