@@ -50,7 +50,7 @@ export function Hero() {
 
             <div className="mt-12 pt-8 border-t border-border/60 max-w-sm">
               <p className="text-[0.78rem] tracking-[0.08em] text-taupe uppercase font-medium">
-                Atendimento online e presencial em Goiânia • CRP {site.crp}
+                Atendimento online • Psicóloga em Goiânia • CRP {site.crp}
               </p>
             </div>
           </Reveal>

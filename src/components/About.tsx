@@ -33,7 +33,7 @@ export function About() {
               </h2>
               <div className="mt-8 space-y-6 text-[1rem] leading-relaxed text-taupe">
                 <p>
-                  Sou psicóloga em Goiânia e realizo atendimentos online e presenciais.
+                  Sou psicóloga em Goiânia e realizo atendimento psicológico online.
                   Construí minha trajetória profissional especialmente no acompanhamento
                   de crianças neurodivergentes, atuando em contextos clínicos e domiciliares.
                 </p>

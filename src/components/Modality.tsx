@@ -23,10 +23,10 @@ export function Modality() {
             <div className="mt-8 space-y-6 border-t border-border/60 pt-6">
               <div>
                 <h3 className="label-caps font-semibold text-terracotta">
-                  Atendimento presencial em Goiânia
+                  Psicóloga em Goiânia
                 </h3>
                 <p className="mt-2 text-[0.95rem] leading-relaxed text-foreground/90">
-                  Atendimento psicológico presencial em Goiânia, mediante agendamento prévio.
+                  Kelle Tavares é psicóloga em Goiânia/GO e realiza atendimento psicológico online, permitindo o acompanhamento de pessoas em diferentes localidades.
                 </p>
               </div>
 
