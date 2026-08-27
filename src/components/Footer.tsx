@@ -29,9 +29,9 @@ export function Footer() {
           <a href="/infantil" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Acompanhamento Infantil
           </a>
-          <a href="/#conteudos" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
+          <Link to="/conteudos" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Conteúdos
-          </a>
+          </Link>
           <a href="/#duvidas" className="link-underline text-[0.8rem] text-taupe hover:text-foreground">
             Dúvidas
           </a>

@@ -46,9 +46,9 @@ export const seoConfig = {
     ogImage: DEFAULT_OG_IMAGE,
   },
   conteudos: {
-    title: "Conteúdos e Artigos | Kelle Tavares, Psicóloga",
+    title: "Conteúdos sobre Psicologia | Kelle Tavares",
     description:
-      "Reflexões sobre comportamento, desenvolvimento, relações e saúde mental escritas pela psicóloga Kelle Tavares, CRP 21419.",
+      "Conteúdos sobre psicoterapia, saúde emocional, desenvolvimento e acompanhamento psicológico por Kelle Tavares, psicóloga em Goiânia.",
     canonical: absoluteUrl("/conteudos"),
     ogImage: DEFAULT_OG_IMAGE,
   },
@@ -123,7 +123,7 @@ export const site = {
         { label: "Acompanhamento Infantil", href: "/infantil" },
       ]
     },
-    { label: "Conteúdos", href: "/#conteudos" },
+    { label: "Conteúdos", href: "/conteudos" },
     { label: "Dúvidas", href: "/#duvidas" },
   ],
 } as const;

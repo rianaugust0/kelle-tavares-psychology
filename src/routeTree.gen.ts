@@ -11,9 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdultosRouteImport } from './routes/adultos'
-import { Route as ConteudosRouteImport } from './routes/conteudos'
 import { Route as InfantilRouteImport } from './routes/infantil'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as ConteudosIndexRouteImport } from './routes/conteudos/index'
+import { Route as ConteudosSlugRouteImport } from './routes/conteudos/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,11 +24,6 @@ const IndexRoute = IndexRouteImport.update({
 const AdultosRoute = AdultosRouteImport.update({
   id: '/adultos',
   path: '/adultos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConteudosRoute = ConteudosRouteImport.update({
-  id: '/conteudos',
-  path: '/conteudos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InfantilRoute = InfantilRouteImport.update({
@@ -40,41 +36,72 @@ const SobreRoute = SobreRouteImport.update({
   path: '/sobre',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ConteudosRoute,
+} as any)
+const ConteudosSlugRoute = ConteudosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ConteudosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/adultos': typeof AdultosRoute
-  '/conteudos': typeof ConteudosRoute
   '/infantil': typeof InfantilRoute
   '/sobre': typeof SobreRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/adultos': typeof AdultosRoute
-  '/conteudos': typeof ConteudosRoute
   '/infantil': typeof InfantilRoute
   '/sobre': typeof SobreRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos': typeof ConteudosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/adultos': typeof AdultosRoute
-  '/conteudos': typeof ConteudosRoute
   '/infantil': typeof InfantilRoute
   '/sobre': typeof SobreRoute
+  '/conteudos/$slug': typeof ConteudosSlugRoute
+  '/conteudos/': typeof ConteudosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/adultos' | '/conteudos' | '/infantil' | '/sobre'
+  fullPaths:
+    | '/'
+    | '/adultos'
+    | '/infantil'
+    | '/sobre'
+    | '/conteudos/$slug'
+    | '/conteudos/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/adultos' | '/conteudos' | '/infantil' | '/sobre'
-  id: '__root__' | '/' | '/adultos' | '/conteudos' | '/infantil' | '/sobre'
+  to:
+    | '/'
+    | '/adultos'
+    | '/infantil'
+    | '/sobre'
+    | '/conteudos/$slug'
+    | '/conteudos'
+  id:
+    | '__root__'
+    | '/'
+    | '/adultos'
+    | '/infantil'
+    | '/sobre'
+    | '/conteudos/$slug'
+    | '/conteudos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdultosRoute: typeof AdultosRoute
-  ConteudosRoute: typeof ConteudosRoute
   InfantilRoute: typeof InfantilRoute
   SobreRoute: typeof SobreRoute
 }
@@ -95,13 +122,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdultosRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/conteudos': {
-      id: '/conteudos'
-      path: '/conteudos'
-      fullPath: '/conteudos'
-      preLoaderRoute: typeof ConteudosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/infantil': {
       id: '/infantil'
       path: '/infantil'
@@ -116,13 +136,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SobreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conteudos/': {
+      id: '/conteudos/'
+      path: '/'
+      fullPath: '/conteudos/'
+      preLoaderRoute: typeof ConteudosIndexRouteImport
+      parentRoute: typeof ConteudosRoute
+    }
+    '/conteudos/$slug': {
+      id: '/conteudos/$slug'
+      path: '/$slug'
+      fullPath: '/conteudos/$slug'
+      preLoaderRoute: typeof ConteudosSlugRouteImport
+      parentRoute: typeof ConteudosRoute
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdultosRoute: AdultosRoute,
-  ConteudosRoute: ConteudosRoute,
   InfantilRoute: InfantilRoute,
   SobreRoute: SobreRoute,
 }
