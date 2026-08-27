@@ -147,11 +147,11 @@ function AdultosPage() {
                 </div>
 
                 <h1 className="mt-6 text-[2.4rem] leading-[1.1] text-foreground sm:text-[3.2rem] lg:text-[3.8rem] font-light">
-                  Psicoterapia para adultos online
+                  Psicoterapia para adultos em Goiânia e online
                 </h1>
 
                 <p className="mt-6 max-w-xl text-[1.1rem] leading-relaxed text-taupe font-normal">
-                  Um espaço de escuta e cuidado para compreender emoções, relações e os desafios vividos em diferentes momentos da vida.
+                  Um espaço de escuta e cuidado para adultos que desejam compreender melhor suas emoções, relações e diferentes momentos da vida, com atendimento presencial em Goiânia e online.
                 </p>
 
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -223,6 +223,42 @@ function AdultosPage() {
                     <p className="text-[0.92rem] text-taupe mt-2.5 leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* SEÇÃO: UM ESPAÇO PARA VOCÊ */}
+        <section className="border-t border-border py-20 md:py-28 bg-warm-white">
+          <div className="mx-auto max-w-[1240px] px-6 md:px-10">
+            <Reveal className="max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="h-px w-8 bg-terracotta" />
+                <p className="eyebrow text-terracotta font-semibold">Um espaço para você</p>
+              </div>
+
+              <h2 className="mt-6 font-serif text-[2.3rem] leading-[1.15] text-foreground sm:text-[3.2rem]">
+                Você não precisa esperar tudo ficar difícil para procurar terapia.
+              </h2>
+
+              <div className="mt-6 space-y-4 text-[1.05rem] leading-relaxed text-taupe">
+                <p>
+                  A psicoterapia também pode ser procurada por quem deseja se conhecer melhor, compreender padrões de comportamento, lidar com mudanças ou encontrar um espaço seguro para falar sobre o que tem vivido.
+                </p>
+                <p className="text-foreground/90 font-medium font-serif text-[1.2rem]">
+                  Cada processo começa a partir da realidade, das necessidades e do momento de cada pessoa.
+                </p>
+              </div>
+
+              <div className="mt-10 pt-4">
+                <WhatsAppLink
+                  location="adultos_espaco_voce"
+                  target="adultos"
+                  event="whatsapp_adult_section_click"
+                  className="inline-flex items-center gap-2 text-[0.8rem] font-bold tracking-[0.16em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                >
+                  Quero conversar sobre o atendimento <span>→</span>
+                </WhatsAppLink>
               </div>
             </Reveal>
           </div>

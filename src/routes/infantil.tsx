@@ -5,12 +5,18 @@ import { Reveal } from "@/components/Reveal";
 import { PhotoFrame } from "@/components/PhotoPlaceholder";
 import { WhatsAppLink } from "@/components/WhatsAppLink";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { site, career, faqInfantil, processStepsInfantil, seoConfig, absoluteUrl } from "@/config/site";
+import { site, career, absoluteUrl } from "@/config/site";
 import portrait from "@/assets/kelle-1.png";
 import aboutPhoto from "@/assets/kelle-4.png";
 import careerPhoto from "@/assets/kelle-3.png";
 
-const seo = seoConfig.infantil;
+const seo = {
+  title: "Psicóloga Infantil em Goiânia | Kelle Tavares",
+  description:
+    "Acompanhamento psicológico infantil em Goiânia com Kelle Tavares, psicóloga CRP 21419. Atendimento acolhedor para crianças e orientação aos responsáveis.",
+  canonical: absoluteUrl("/infantil"),
+  ogImage: absoluteUrl("/og-image.jpg"),
+};
 
 export const Route = createFileRoute("/infantil")({
   head: () => ({
@@ -34,17 +40,24 @@ export const Route = createFileRoute("/infantil")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Service",
-          name: "Acompanhamento Psicológico Infantil",
+          "@type": "Psychologist",
+          name: "Psicóloga Infantil em Goiânia | Kelle Tavares",
           provider: {
             "@type": "Person",
             name: site.name,
             jobTitle: "Psicóloga",
+            identifier: `CRP ${site.crp}`,
             url: site.url,
           },
-          serviceType: "Acompanhamento Psicológico Infantil e Desenvolvimento",
+          serviceType: "Acompanhamento Psicológico Infantil e Orientação Parental",
           description: seo.description,
           url: seo.canonical,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Goiânia",
+            addressRegion: "GO",
+            addressCountry: "BR",
+          },
           areaServed: {
             "@type": "City",
             name: "Goiânia",
@@ -57,11 +70,85 @@ export const Route = createFileRoute("/infantil")({
 });
 
 function InfantilPage() {
-  const pilares = [
-    { num: "01", title: "Desenvolvimento", desc: "Atenção ao ritmo natural e aos marcos de cada fase." },
-    { num: "02", title: "Comportamento", desc: "Compreensão das funções e da regulação emocional." },
-    { num: "03", title: "Adaptação", desc: "Suporte na escola, novas rotinas e socialização." },
-    { num: "04", title: "Contexto familiar", desc: "Orientação e escuta contínua com pais e responsáveis." },
+  const motivos = [
+    {
+      title: "Mudanças importantes no comportamento",
+      desc: "Alterações no humor, comportamento ou rotina que chamam a atenção da família.",
+    },
+    {
+      title: "Dificuldades emocionais",
+      desc: "Momentos de maior sensibilidade, irritabilidade, choro constante ou sobrecarga de sentimentos.",
+    },
+    {
+      title: "Medos e inseguranças",
+      desc: "Receios recorrentes que interferem no bem-estar diário, no sono ou na autonomia da criança.",
+    },
+    {
+      title: "Dificuldades de socialização",
+      desc: "Desafios para interagir, fazer amigos, expressar desejos ou se integrar a grupos.",
+    },
+    {
+      title: "Autoestima e percepção de si",
+      desc: "Insegurança quanto às próprias habilidades, autoexigência ou retraimento social.",
+    },
+    {
+      title: "Mudanças familiares ou escolares",
+      desc: "Transição de escola, nascimento de irmãos, perdas ou reconfigurações familiares.",
+    },
+    {
+      title: "Desenvolvimento infantil",
+      desc: "Necessidade de acompanhamento atento dos marcos e etapas do crescimento.",
+    },
+    {
+      title: "Dificuldades de adaptação",
+      desc: "Desafios para lidar com regras, limites, novos ambientes ou rotinas.",
+    },
+  ];
+
+  const pilaresComoFunciona = [
+    {
+      num: "01",
+      title: "Idade e desenvolvimento",
+      desc: "Estratégias e recursos terapêuticos adaptados à maturidade e fase de vida da criança.",
+    },
+    {
+      num: "02",
+      title: "Contexto familiar e orientação",
+      desc: "Conversas periódicas e escuta contínua com os pais e responsáveis.",
+    },
+    {
+      num: "03",
+      title: "Necessidades individuais",
+      desc: "Olhar cuidadoso para a singularidade, o ritmo e o universo de cada criança.",
+    },
+    {
+      num: "04",
+      title: "Estratégias adequadas",
+      desc: "Atividades lúdicas e intervenções focadas no acolhimento e desenvolvimento de recursos emocionais.",
+    },
+  ];
+
+  const faqInfantilCustom = [
+    {
+      q: "Quando procurar uma psicóloga infantil?",
+      a: "A busca pelo acompanhamento psicológico infantil pode ocorrer ao notar mudanças de comportamento, dificuldades emocionais, desafios de adaptação escolar, medos recorrentes ou quando a família sente necessidade de orientação profissional para apoiar o desenvolvimento da criança.",
+    },
+    {
+      q: "Como funciona o primeiro contato?",
+      a: "Os pais ou responsáveis entram em contato pelo WhatsApp para conversar inicialmente, apresentar suas dúvidas e demandas, compreender a forma de trabalho e verificar a disponibilidade de horários.",
+    },
+    {
+      q: "Os responsáveis participam do acompanhamento?",
+      a: "Sim. A família desempenha papel fundamental no processo. São realizados encontros de orientação parental e conversas periódicas com os responsáveis para compartilhar observações, alinhar estratégias e acompanhar a evolução da criança.",
+    },
+    {
+      q: "Como funciona o acompanhamento psicológico infantil?",
+      a: "O acompanhamento considera a idade, a fase de desenvolvimento e o contexto individual de cada criança. São utilizadas estratégias lúdicas e recursos terapêuticos próprios para acolher emoções, promover o autoconhecimento e favorecer o desenvolvimento saudável.",
+    },
+    {
+      q: "Como conversar sobre disponibilidade de horários?",
+      a: "Basta enviar uma mensagem diretamente pelo WhatsApp. Conversamos sobre as possibilidades de atendimento presencial em Goiânia e organizamos os próximos passos de forma simples.",
+    },
   ];
 
   return (
@@ -79,12 +166,12 @@ function InfantilPage() {
                   <p className="eyebrow text-terracotta font-semibold">Acompanhamento psicológico infantil</p>
                 </div>
 
-                <h1 className="mt-6 text-[2.7rem] leading-[1.06] text-foreground sm:text-[3.5rem] lg:text-[4.2rem] font-light">
-                  Um olhar atento para a <span className="italic font-normal text-terracotta">singularidade</span> de cada criança.
+                <h1 className="mt-6 text-[2.7rem] leading-[1.06] text-foreground sm:text-[3.5rem] lg:text-[4.2rem] font-light font-serif">
+                  Psicóloga infantil em Goiânia
                 </h1>
 
                 <p className="mt-6 max-w-xl text-[1.1rem] leading-relaxed text-taupe font-normal">
-                  O acompanhamento psicológico considera desenvolvimento, comportamento, relações e contexto, respeitando as particularidades de cada criança.
+                  Acompanhamento psicológico infantil com escuta, cuidado e atenção às necessidades de cada criança e de sua família.
                 </p>
 
                 <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -94,14 +181,14 @@ function InfantilPage() {
                     event="whatsapp_child_hero_click"
                     className="bg-foreground text-primary-foreground px-8 py-4 text-center text-[0.78rem] font-semibold tracking-[0.16em] uppercase transition-all duration-300 hover:bg-terracotta hover:text-white shadow-md hover:shadow-lg hover:-translate-y-0.5"
                   >
-                    Conversar sobre acompanhamento →
+                    Quero saber sobre o atendimento →
                   </WhatsAppLink>
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-border/80 max-w-sm flex items-center gap-3">
                   <span className="h-2 w-2 rounded-full bg-terracotta/70 animate-pulse" />
                   <p className="text-[0.78rem] tracking-[0.12em] text-foreground/80 uppercase font-semibold">
-                    Atendimento online • CRP {site.crp}
+                    Atendimento infantil em Goiânia • CRP {site.crp}
                   </p>
                 </div>
               </Reveal>
@@ -110,7 +197,7 @@ function InfantilPage() {
                 <div className="relative p-3 bg-warm-white border border-border/80 shadow-lg">
                   <PhotoFrame
                     src={portrait}
-                    alt="Retrato de Kelle Tavares, psicóloga"
+                    alt="Retrato de Kelle Tavares, psicóloga infantil em Goiânia"
                     width={912}
                     height={1200}
                     priority
@@ -124,36 +211,42 @@ function InfantilPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 2: ROSÉ — CONTEXTO DA CRIANÇA COM FOTOGRAFIA INTEGRADA (60% Conteúdo + 40% Foto) */}
+        {/* CAPÍTULO 2: ROSÉ — QUANDO BUSCAR ACOMPANHAMENTO PSICOLÓGICO INFANTIL? */}
         <section className="py-24 md:py-32 border-t border-border bg-blush/45">
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
             <div className="grid gap-12 lg:grid-cols-[58fr_42fr] lg:gap-16 items-center">
               <Reveal>
                 <div className="flex items-center gap-3">
                   <span className="h-px w-8 bg-terracotta" />
-                  <p className="eyebrow text-terracotta font-semibold">Para responsáveis</p>
+                  <p className="eyebrow text-terracotta font-semibold">Orientação aos responsáveis</p>
                 </div>
 
                 <h2 className="mt-6 font-serif text-[2.4rem] leading-[1.12] text-foreground sm:text-[3.2rem]">
-                  Para cada criança, uma história e um contexto.
+                  Quando buscar acompanhamento psicológico infantil?
                 </h2>
 
                 <div className="mt-6 space-y-4 text-[1.05rem] leading-relaxed text-taupe">
                   <p>
-                    Desenvolvimento e comportamento não acontecem de forma isolada. O acompanhamento considera a criança, sua rotina, suas relações e o contexto em que está inserida.
+                    Diferentes comportamentos, mudanças na rotina, sentimentos expressos e desafios do desenvolvimento podem levar a família a buscar orientação de uma psicóloga infantil.
                   </p>
-                  <p className="text-foreground/90 font-medium font-serif text-[1.2rem]">
-                    O trabalho é construído com atenção ao momento de cada fase, oferecendo suporte tanto à criança quanto aos pais e responsáveis ao longo do percurso.
+                  <p className="text-foreground/90 font-medium font-serif text-[1.15rem]">
+                    O acompanhamento psicológico infantil oferece um espaço seguro e acolhedor para compreender as necessidades da criança e auxiliar os pais ao longo do processo, sem rótulos ou diagnósticos precipitados.
                   </p>
                 </div>
 
-                {/* 4 Termos em Composição Editorial Serifada com Números e Linhas Finas */}
+                {/* Grid dos principais motivos / temas */}
                 <div className="mt-10 grid gap-4 sm:grid-cols-2 pt-6 border-t border-terracotta/25">
-                  {pilares.map((item) => (
-                    <div key={item.num} className="p-4 bg-warm-white/70 border border-border/60">
-                      <span className="font-serif text-[1.2rem] text-terracotta font-semibold block">{item.num}</span>
-                      <h3 className="font-serif text-[1.3rem] text-foreground font-medium mt-1">{item.title}</h3>
-                      <p className="text-[0.82rem] text-taupe mt-1 leading-snug">{item.desc}</p>
+                  {motivos.map((item, idx) => (
+                    <div key={idx} className="p-4 bg-warm-white/80 border border-border/60">
+                      <span className="font-serif text-[0.88rem] text-terracotta font-semibold block uppercase tracking-wider">
+                        0{idx + 1}
+                      </span>
+                      <h3 className="font-serif text-[1.15rem] text-foreground font-medium mt-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-[0.82rem] text-taupe mt-1 leading-snug">
+                        {item.desc}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -163,7 +256,7 @@ function InfantilPage() {
                 <div className="relative p-3 bg-warm-white border border-border/80 shadow-md">
                   <PhotoFrame
                     src={aboutPhoto}
-                    alt="Kelle Tavares, psicóloga infantil"
+                    alt="Kelle Tavares, psicóloga infantil em Goiânia"
                     width={800}
                     height={1000}
                     pending={false}
@@ -176,17 +269,59 @@ function InfantilPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 3: MARFIM — TRAJETÓRIA E FORMAÇÃO (AUTORIDADE COM FOTO E DESTAQUE +3 ANOS) */}
-        <section className="border-t border-border py-24 md:py-32 bg-ivory">
+        {/* CAPÍTULO 3: MARFIM — COMO FUNCIONA O ACOMPANHAMENTO INFANTIL */}
+        <section className="border-t border-border py-20 md:py-28 bg-ivory">
+          <div className="mx-auto max-w-[1240px] px-6 md:px-10">
+            <Reveal className="max-w-3xl">
+              <div className="flex items-center gap-3">
+                <span className="h-px w-8 bg-terracotta" />
+                <p className="eyebrow text-terracotta font-semibold">Cuidado e metodologia</p>
+              </div>
+              <h2 className="mt-5 text-[2.2rem] leading-tight text-foreground sm:text-[2.9rem]">
+                Como funciona o acompanhamento infantil
+              </h2>
+              <p className="mt-4 text-[1.05rem] leading-relaxed text-taupe">
+                O trabalho da psicologia infantil é construído de maneira simples, acolhedora e estruturada, considerando as particularidades de cada criança e a parceria contínua com a família.
+              </p>
+            </Reveal>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {pilaresComoFunciona.map((item) => (
+                <Reveal key={item.num} delay={80} className="p-6 bg-warm-white border border-border/80 shadow-xs flex flex-col justify-between transition-all duration-300 hover:border-terracotta/40 hover:-translate-y-0.5">
+                  <div>
+                    <span className="font-serif text-[1.8rem] text-terracotta font-light">
+                      {item.num}
+                    </span>
+                    <h3 className="mt-3 text-[1.25rem] text-foreground font-serif">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[0.88rem] leading-relaxed text-taupe">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="mt-6 pt-3 border-t border-border/50">
+                    <span className="h-0.5 w-6 bg-terracotta/40 block" />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CAPÍTULO 4: EXPERIÊNCIA DA KELLE */}
+        <section className="border-t border-border py-24 md:py-32 bg-blush/20">
           <div className="mx-auto max-w-[1240px] px-6 md:px-10">
             <Reveal className="max-w-2xl">
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-terracotta" />
-                <p className="eyebrow text-terracotta font-semibold">Trajetória e formação</p>
+                <p className="eyebrow text-terracotta font-semibold">Experiência profissional</p>
               </div>
               <h2 className="mt-6 text-[2.4rem] leading-tight text-foreground sm:text-[3.2rem]">
-                Formação e experiência profissional
+                Experiência da Kelle
               </h2>
+              <p className="mt-3 text-[1.05rem] text-taupe font-normal">
+                Kelle Tavares • Psicóloga • CRP 21419 • Goiânia
+              </p>
             </Reveal>
 
             <div className="mt-16 grid gap-12 lg:grid-cols-[40fr_60fr] lg:gap-16 items-start">
@@ -194,7 +329,7 @@ function InfantilPage() {
                 <div className="p-3 bg-warm-white border border-border/80 shadow-md">
                   <PhotoFrame
                     src={careerPhoto}
-                    alt="Kelle Tavares, psicóloga"
+                    alt="Kelle Tavares, psicóloga infantil em Goiânia"
                     width={600}
                     height={800}
                     pending={false}
@@ -205,7 +340,7 @@ function InfantilPage() {
               </Reveal>
 
               <div className="space-y-10">
-                {/* Destaque Tipográfico +3 Anos */}
+                {/* Destaque profissional */}
                 <Reveal delay={80} className="p-8 bg-warm-white border border-border/80 shadow-sm">
                   <div className="flex items-baseline gap-4 border-b border-border/80 pb-6">
                     <span className="font-serif text-[4.5rem] leading-none text-terracotta font-light">
@@ -216,18 +351,28 @@ function InfantilPage() {
                         anos de atuação profissional
                       </p>
                       <p className="text-[0.88rem] text-taupe mt-1">
-                        Experiência especialmente com crianças neurodivergentes.
+                        Atuação destacada com desenvolvimento infantil, comportamento e crianças neurodivergentes.
                       </p>
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-2">
-                    <p className="font-serif text-[1.3rem] text-foreground font-medium">
-                      Atendimento clínico e domiciliar
-                    </p>
-                    <p className="text-[0.85rem] text-taupe mt-1">
-                      Vivência prática e acompanhamento estruturado em diferentes contextos.
-                    </p>
+                  <div className="mt-6 pt-2 space-y-3">
+                    <div>
+                      <p className="font-serif text-[1.2rem] text-foreground font-medium">
+                        Atendimento clínico e domiciliar
+                      </p>
+                      <p className="text-[0.85rem] text-taupe mt-0.5">
+                        Acompanhamento estruturado respeitando o contexto e a rotina da criança.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="font-serif text-[1.2rem] text-foreground font-medium">
+                        Experiência institucional em Goiânia
+                      </p>
+                      <p className="text-[0.85rem] text-taupe mt-0.5">
+                        Vivência prática no Instituto NeuroOrtopédico de Goiânia e na Clínica Casa Colorê.
+                      </p>
+                    </div>
                   </div>
                 </Reveal>
 
@@ -239,7 +384,7 @@ function InfantilPage() {
                   <ul className="mt-6 space-y-4">
                     {career.formation.map((item) => (
                       <li key={item.title} className="border-b border-border/40 pb-3 last:border-none last:pb-0">
-                        <p className="font-serif text-[1.2rem] text-foreground font-medium">
+                        <p className="font-serif text-[1.15rem] text-foreground font-medium">
                           {item.title}
                         </p>
                         {item.detail && (
@@ -254,7 +399,7 @@ function InfantilPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 4: CAFÉ — MOMENTO DE IMPACTO EDITORIAL */}
+        {/* CAPÍTULO 5: CAFÉ — MANIFESTO E ÉTICA */}
         <section className="bg-coffee py-20 md:py-24 text-ivory border-t border-coffee/20">
           <div className="mx-auto max-w-[940px] px-6 text-center md:px-10">
             <Reveal>
@@ -269,43 +414,29 @@ function InfantilPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 5: MARFIM — COMO FUNCIONA (PROCESSO EM 3 ETAPAS) */}
+        {/* CAPÍTULO 6: ATENDIMENTO EM GOIÂNIA */}
         <section className="border-t border-border py-20 md:py-24 bg-ivory">
-          <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-            <Reveal className="max-w-2xl">
-              <div className="flex items-center gap-3">
+          <div className="mx-auto max-w-[1100px] px-6 md:px-10">
+            <Reveal className="p-8 md:p-12 bg-warm-white border border-border/80 shadow-sm text-center">
+              <div className="inline-flex items-center gap-3">
                 <span className="h-px w-8 bg-terracotta" />
-                <p className="eyebrow text-terracotta font-semibold">O processo</p>
+                <p className="eyebrow text-terracotta font-semibold">Atendimento presencial</p>
+                <span className="h-px w-8 bg-terracotta" />
               </div>
-              <h2 className="mt-5 text-[2.2rem] leading-tight text-foreground sm:text-[2.9rem]">
-                Como funciona o acompanhamento
+              <h2 className="mt-4 font-serif text-[2.2rem] leading-tight text-foreground sm:text-[2.8rem]">
+                Atendimento infantil em Goiânia
               </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-[1.05rem] leading-relaxed text-taupe">
+                O acompanhamento psicológico infantil presencial é realizado na cidade de Goiânia (GO) mediante agendamento prévio. As consultas ocorrem em ambiente adequado para acolher a criança e conversar com os responsáveis.
+              </p>
+              <p className="mx-auto mt-3 max-w-xl text-[0.92rem] text-taupe/80 italic">
+                Horários, formatos e detalhes do primeiro atendimento são combinados diretamente no contato via WhatsApp.
+              </p>
             </Reveal>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              {processStepsInfantil.map((step, i) => (
-                <Reveal key={step.index} delay={i * 90} className="p-6 md:p-7 bg-warm-white border border-border/80 shadow-xs flex flex-col justify-between transition-all duration-300 hover:border-terracotta/40 hover:-translate-y-0.5">
-                  <div>
-                    <span className="font-serif text-[2.1rem] text-terracotta font-light">
-                      {step.index}
-                    </span>
-                    <h3 className="mt-3 text-[1.4rem] text-foreground font-serif">
-                      {step.title}
-                    </h3>
-                    <p className="mt-2 text-[0.94rem] leading-relaxed text-taupe">
-                      {step.text}
-                    </p>
-                  </div>
-                  <div className="mt-6 pt-3 border-t border-border/50">
-                    <span className="h-0.5 w-6 bg-terracotta/40 block" />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
           </div>
         </section>
 
-        {/* CAPÍTULO 6: ROSÉ — FAQ DOS RESPONSÁVEIS */}
+        {/* CAPÍTULO 7: ROSÉ — FAQ DOS RESPONSÁVEIS */}
         <section className="border-t border-border py-20 md:py-26 bg-blush/35">
           <div className="mx-auto max-w-[880px] px-6 md:px-10">
             <Reveal>
@@ -319,7 +450,7 @@ function InfantilPage() {
             </Reveal>
 
             <Accordion type="single" collapsible className="mt-12 divide-y divide-border border-y border-border">
-              {faqInfantil.map((item, i) => (
+              {faqInfantilCustom.map((item, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-none py-2.5">
                   <AccordionTrigger className="text-left font-serif text-[1.3rem] font-normal text-foreground hover:no-underline sm:text-[1.45rem]">
                     {item.q}
@@ -333,7 +464,7 @@ function InfantilPage() {
           </div>
         </section>
 
-        {/* CAPÍTULO 7: CAFÉ — CONVERSÃO FINAL */}
+        {/* CAPÍTULO 8: CAFÉ — CONVERSÃO FINAL (CTA) */}
         <section className="bg-coffee py-32 text-ivory md:py-40 border-t border-coffee/20 relative overflow-hidden">
           <div className="relative mx-auto max-w-[940px] px-6 text-center md:px-10">
             <Reveal>
@@ -343,12 +474,12 @@ function InfantilPage() {
                 <span className="h-px w-8 bg-rose" />
               </div>
 
-              <h2 className="mt-6 font-serif text-[3rem] leading-[1.06] text-ivory sm:text-[3.8rem] lg:text-[4.6rem]">
+              <h2 className="mt-6 font-serif text-[2.6rem] leading-[1.1] text-ivory sm:text-[3.5rem] lg:text-[4.2rem]">
                 Quer saber mais sobre o acompanhamento infantil?
               </h2>
 
               <p className="mx-auto mt-6 max-w-xl text-[1.1rem] leading-relaxed text-ivory/85">
-                Entre em contato pelo WhatsApp para conversar com Kelle, tirar dúvidas iniciais e verificar disponibilidade.
+                Entre em contato para conversar sobre o atendimento e verificar disponibilidade de horários.
               </p>
 
               <div className="mt-12 flex justify-center">
@@ -358,7 +489,7 @@ function InfantilPage() {
                   event="whatsapp_child_final_click"
                   className="inline-block bg-terracotta text-white px-12 py-5 text-[0.85rem] font-bold tracking-[0.2em] uppercase transition-all duration-300 hover:bg-white hover:text-coffee shadow-2xl hover:-translate-y-1"
                 >
-                  Conversar com Kelle pelo WhatsApp →
+                  Falar com Kelle →
                 </WhatsAppLink>
               </div>
 
@@ -376,3 +507,4 @@ function InfantilPage() {
     </>
   );
 }
+
