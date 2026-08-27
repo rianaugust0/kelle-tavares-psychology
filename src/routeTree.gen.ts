@@ -42,9 +42,9 @@ const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
   getParentRoute: () => ConteudosRoute,
 } as any)
 const ConteudosSlugRoute = ConteudosSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ConteudosRoute,
+  id: '/conteudos/$slug',
+  path: '/conteudos/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -104,6 +104,7 @@ export interface RootRouteChildren {
   AdultosRoute: typeof AdultosRoute
   InfantilRoute: typeof InfantilRoute
   SobreRoute: typeof SobreRoute
+  ConteudosSlugRoute: typeof ConteudosSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -145,10 +146,10 @@ declare module '@tanstack/react-router' {
     }
     '/conteudos/$slug': {
       id: '/conteudos/$slug'
-      path: '/$slug'
+      path: '/conteudos/$slug'
       fullPath: '/conteudos/$slug'
       preLoaderRoute: typeof ConteudosSlugRouteImport
-      parentRoute: typeof ConteudosRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -158,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdultosRoute: AdultosRoute,
   InfantilRoute: InfantilRoute,
   SobreRoute: SobreRoute,
+  ConteudosSlugRoute: ConteudosSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
