@@ -37,9 +37,9 @@ const SobreRoute = SobreRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConteudosIndexRoute = ConteudosIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => ConteudosRoute,
+  id: '/conteudos/',
+  path: '/conteudos/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ConteudosSlugRoute = ConteudosSlugRouteImport.update({
   id: '/conteudos/$slug',
@@ -105,6 +105,7 @@ export interface RootRouteChildren {
   InfantilRoute: typeof InfantilRoute
   SobreRoute: typeof SobreRoute
   ConteudosSlugRoute: typeof ConteudosSlugRoute
+  ConteudosIndexRoute: typeof ConteudosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -139,10 +140,10 @@ declare module '@tanstack/react-router' {
     }
     '/conteudos/': {
       id: '/conteudos/'
-      path: '/'
+      path: '/conteudos'
       fullPath: '/conteudos/'
       preLoaderRoute: typeof ConteudosIndexRouteImport
-      parentRoute: typeof ConteudosRoute
+      parentRoute: typeof rootRouteImport
     }
     '/conteudos/$slug': {
       id: '/conteudos/$slug'
@@ -160,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   InfantilRoute: InfantilRoute,
   SobreRoute: SobreRoute,
   ConteudosSlugRoute: ConteudosSlugRoute,
+  ConteudosIndexRoute: ConteudosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
