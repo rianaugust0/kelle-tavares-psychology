@@ -18,8 +18,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-serif: "Cormorant Garamond", Georgia, serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Libre Baskerville", Georgia, serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -60,14 +60,14 @@
 :root {
   --radius: 0.25rem;
 
-  /* Paleta oficial refinada com maior vibração, contraste e profundidade editorial */
-  --ivory: oklch(0.975 0.012 62); /* Marfim luminoso e acolhedor */
-  --warm-white: oklch(0.995 0.005 60); /* Branco quente puro */
-  --blush: oklch(0.905 0.026 42); /* Bege rosado mais quente e presente */
-  --terracotta: oklch(0.585 0.105 38); /* Terracota rico, elegante e vibrante */
-  --rose: oklch(0.68 0.075 37); /* Rosé queimado sofisticado */
-  --coffee: oklch(0.20 0.022 42); /* Café profundo ultra contrastado */
-  --taupe: oklch(0.46 0.02 45); /* Taupe aveludado e legível */
+  /* Nude sofisticado: #F2ECE6 #D8C7BC #9B7467 #443632 #FBF8F5 */
+  --ivory: oklch(0.948 0.013 58);
+  --warm-white: oklch(0.982 0.007 58);
+  --blush: oklch(0.829 0.027 48);
+  --terracotta: oklch(0.566 0.062 38);
+  --rose: oklch(0.658 0.047 39);
+  --coffee: oklch(0.303 0.024 40);
+  --taupe: oklch(0.493 0.021 42);
 
   --background: var(--ivory);
   --foreground: var(--coffee);
@@ -85,8 +85,8 @@
   --accent-foreground: var(--warm-white);
   --destructive: oklch(0.52 0.14 27);
   --destructive-foreground: var(--warm-white);
-  --border: oklch(0.85 0.022 45);
-  --input: oklch(0.85 0.022 45);
+  --border: oklch(0.80 0.024 46);
+  --input: oklch(0.80 0.024 46);
   --ring: var(--terracotta);
 
   --sidebar: var(--ivory);
@@ -127,7 +127,7 @@
     font-family: var(--font-serif);
     font-weight: 300;
     line-height: 1.08;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
   }
 
   :focus-visible {
@@ -190,7 +190,7 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(24px);
     transition:
       opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
       transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
@@ -198,6 +198,22 @@
   .reveal[data-visible="true"] {
     opacity: 1;
     transform: none;
+  }
+
+  .image-reveal {
+    clip-path: inset(0 0 100% 0);
+    transition: clip-path 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal[data-visible="true"] .image-reveal,
+  .image-reveal[data-visible="true"] {
+    clip-path: inset(0);
+  }
+
+  .editorial-arrow {
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  a:hover .editorial-arrow {
+    transform: translateX(0.35rem);
   }
 
   .rule {
@@ -262,10 +278,10 @@
 
   /* Header sticky marrom-claro/opaco ao scroll */
   .header-scrolled {
-    background-color: rgba(247, 243, 239, 0.95) !important;
+    background-color: color-mix(in oklab, var(--ivory) 94%, transparent) !important;
     backdrop-filter: blur(14px) !important;
     border-bottom: 1px solid rgba(183, 124, 104, 0.2) !important;
-    box-shadow: 0 4px 20px -4px rgba(51, 41, 37, 0.04) !important;
+    box-shadow: 0 4px 20px -4px color-mix(in oklab, var(--coffee) 5%, transparent) !important;
   }
 }
 
@@ -277,6 +293,9 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .image-reveal {
+    clip-path: inset(0);
   }
   *,
   *::before,
