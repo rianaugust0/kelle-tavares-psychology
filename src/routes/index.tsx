@@ -10,6 +10,7 @@ import { Modality } from "@/components/Modality";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { HomeIdentification } from "@/components/HomeIdentification";
 import { site, seoConfig, absoluteUrl } from "@/config/site";
 
 const seo = seoConfig.home;
@@ -69,6 +70,7 @@ function Index() {
       <main>
         {/* 1. HERO (Foto + Proposta + WhatsApp) */}
         <Hero />
+        <HomeIdentification />
 
         {/* 2. ATENDIMENTOS (Dois grandes blocos visuais protagonistas: Adultos x Infantil) */}
         <Services />
