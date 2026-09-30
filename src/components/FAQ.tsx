@@ -31,7 +31,7 @@ export function FAQ() {
     <section id="duvidas" className="border-t border-border py-20 md:py-28 bg-blush/35">
       <div className="mx-auto max-w-[1240px] px-6 md:px-10">
         <div className="grid gap-12 lg:grid-cols-[38fr_62fr] lg:gap-20">
-          <Reveal>
+          <Reveal direction="left">
             <div className="flex items-center gap-3">
               <span className="h-px w-8 bg-terracotta" />
               <p className="eyebrow text-terracotta font-semibold">Dúvidas</p>
@@ -47,18 +47,19 @@ export function FAQ() {
               <p className="text-[0.88rem] text-taupe font-medium">Ainda tem alguma dúvida?</p>
               <WhatsAppLink
                 location="faq_sidebar"
-                className="mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                className="group mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
               >
-                Conversar com Kelle →
+                <span>Conversar com Kelle</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
               </WhatsAppLink>
             </div>
           </Reveal>
 
-          <Reveal delay={100}>
+          <Reveal direction="right" delay={120}>
             <Accordion type="single" collapsible className="w-full divide-y divide-border border-y border-border">
               {homeFaq.map((item, i) => (
                 <AccordionItem key={item.q} value={`item-${i}`} className="border-none py-2.5">
-                  <AccordionTrigger className="text-left font-serif text-[1.3rem] font-normal text-foreground hover:no-underline sm:text-[1.45rem]">
+                  <AccordionTrigger className="text-left font-serif text-[1.3rem] font-normal text-foreground hover:no-underline hover:text-terracotta transition-colors duration-200 sm:text-[1.45rem]">
                     {item.q}
                   </AccordionTrigger>
                   <AccordionContent className="text-[0.98rem] leading-relaxed text-taupe pt-1.5 pb-4">
@@ -72,9 +73,10 @@ export function FAQ() {
               <p className="text-[0.88rem] text-taupe font-medium">Ainda tem alguma dúvida?</p>
               <WhatsAppLink
                 location="faq_bottom"
-                className="mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                className="group mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
               >
-                Conversar com Kelle →
+                <span>Conversar com Kelle</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
               </WhatsAppLink>
             </div>
           </Reveal>

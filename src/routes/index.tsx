@@ -68,15 +68,14 @@ function Index() {
     <>
       <Header />
       <main>
-        {/* 1. HERO (Foto + Proposta + WhatsApp) */}
+        {/* 1. HERO (Seção 1) */}
         <Hero />
-        <HomeIdentification />
 
-        {/* 2. ATENDIMENTOS (Dois grandes blocos visuais protagonistas: Adultos x Infantil) */}
-        <Services />
-
-        {/* 3. SOBRE KELLE (Foto profissional + Apresentação curta) */}
+        {/* 2. SOBRE KELLE TAVARES (Seção 2) */}
         <About />
+
+        {/* 3. ÁREAS DE ATUAÇÃO & CUIDADO (Seção 3) */}
+        <Services />
 
         {/* 4. FRASE EDITORIAL (Bloco Café para momento de impacto e quebra visual) */}
         <EditorialQuote />

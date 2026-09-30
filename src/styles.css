@@ -18,8 +18,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
-  --font-serif: "Libre Baskerville", Georgia, serif;
-  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", "Lora", "Playfair Display", Georgia, serif;
+  --font-sans: "Manrope", "Inter", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -283,13 +283,143 @@
     border-bottom: 1px solid rgba(183, 124, 104, 0.2) !important;
     box-shadow: 0 4px 20px -4px color-mix(in oklab, var(--coffee) 5%, transparent) !important;
   }
+
+  /* Animações de Luxo para Seções e Cards */
+  @keyframes pulseGlow {
+    0%, 100% {
+      opacity: 0.35;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.75;
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: pulseGlow 6s ease-in-out infinite;
+  }
+
+  @keyframes floatSlow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-7px) rotate(0.5deg);
+    }
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 5s ease-in-out infinite;
+  }
+
+  @keyframes floatSubtle {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  .animate-float-subtle {
+    animation: floatSubtle 3.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmerPass {
+    0% {
+      transform: translateX(-100%) skewX(-15deg);
+    }
+    100% {
+      transform: translateX(250%) skewX(-15deg);
+    }
+  }
+
+  .animate-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animate-shimmer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.22),
+      transparent
+    );
+    animation: shimmerPass 3.5s infinite;
+    pointer-events: none;
+  }
+
+  @keyframes lineDash {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 40px 0;
+    }
+  }
+
+  .animate-line-flow {
+    background-image: linear-gradient(90deg, #A07365 50%, transparent 50%);
+    background-size: 16px 2px;
+    animation: lineDash 2s linear infinite;
+  }
+
+  /* Reveal Variantes */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal[data-visible="true"] {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-left[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-right[data-visible="true"] {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-scale[data-visible="true"] {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
     opacity: 1;
     transform: none;
     transition: none;
@@ -304,3 +434,4 @@
     transition-duration: 0.001ms !important;
   }
 }
+

@@ -1,17 +1,61 @@
 import { Reveal } from "./Reveal";
+import { WhatsAppLink } from "./WhatsAppLink";
+import { ArrowRight } from "lucide-react";
 
 export function EditorialQuote() {
   return (
-    <section className="bg-coffee py-28 text-ivory md:py-44">
-      <div className="mx-auto max-w-[1200px] px-6 md:px-10">
-        <Reveal>
-          <p className="eyebrow text-rose">Uma outra possibilidade</p>
-          <blockquote className="mt-10 max-w-[1080px] text-[2.8rem] leading-[1.12] text-ivory sm:text-[4.2rem] lg:text-[5.2rem]">
-            Terapia não precisa começar somente quando <em className="font-normal text-rose">tudo desmorona.</em>
+    <section className="relative bg-[#2D2320] py-24 sm:py-32 lg:py-36 text-[#F6F0EB] overflow-hidden border-t border-[#4A3E3A]">
+      
+      {/* Brilho Radial Aconchegante ao Fundo com Pulsar (Glow Effect) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-radial from-[#A07365]/25 via-[#3A2E2B]/10 to-transparent blur-3xl pointer-events-none animate-glow-pulse" />
+
+      <div className="relative z-10 mx-auto max-w-[1240px] px-6 sm:px-10 lg:px-12 text-center">
+        <Reveal direction="scale" className="flex flex-col items-center">
+          
+          {/* Aspas Gigantes Editoriais Translúcidas com Flutuação */}
+          <span className="font-serif text-[7rem] sm:text-[10rem] lg:text-[12rem] leading-none text-[#C59B8B]/20 font-bold select-none pointer-events-none block -mb-16 sm:-mb-24 lg:-mb-28 animate-float-slow">
+            “
+          </span>
+
+          {/* Tagline superior com linhas delimitadoras */}
+          <div className="inline-flex items-center gap-3.5 mb-6">
+            <span className="h-[1px] w-8 sm:w-12 bg-[#C59B8B]/50" />
+            <span className="text-[0.68rem] font-bold tracking-[0.26em] uppercase text-[#C59B8B]">
+              UMA OUTRA POSSIBILIDADE
+            </span>
+            <span className="h-[1px] w-8 sm:w-12 bg-[#C59B8B]/50" />
+          </div>
+
+          {/* Frase Principal em Destaque */}
+          <blockquote className="font-serif text-[2.3rem] sm:text-[3.5rem] lg:text-[4.4rem] font-medium leading-[1.12] text-[#F6F0EB] tracking-tight max-w-[1020px] mx-auto">
+            Terapia não precisa começar somente quando{" "}
+            <span className="font-serif italic font-normal text-[#D8A798] underline underline-offset-8 decoration-[#D8A798]/30">
+              tudo desmorona.
+            </span>
           </blockquote>
-          <span className="mt-14 block h-px w-28 bg-rose/60" />
+
+          {/* Subtexto explicativo acolhedor */}
+          <p className="mt-8 max-w-[620px] text-[0.95rem] leading-relaxed text-[#D2C3BB] font-sans">
+            Cuidar da sua saúde emocional é um gesto de prevenção, autoconhecimento e construção de equilíbrio para todas as fases da vida.
+          </p>
+
+          {/* Botão de Ação CTA com Shimmer Light Sweep */}
+          <div className="mt-10">
+            <WhatsAppLink
+              location="editorial_quote"
+              event="whatsapp_quote_click"
+              target="home"
+              className="group relative overflow-hidden inline-flex items-center gap-3 border border-[#C59B8B] bg-[#C59B8B]/10 hover:bg-[#C59B8B] text-[#F6F0EB] hover:text-[#2D2320] px-8 py-4 text-[0.72rem] font-bold tracking-[0.16em] uppercase transition-all duration-300 rounded-xs shadow-md active:scale-[0.98]"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+              <span>DAR O PRIMEIRO PASSO</span>
+              <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </WhatsAppLink>
+          </div>
+
         </Reveal>
       </div>
     </section>
   );
 }
+

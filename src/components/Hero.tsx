@@ -1,46 +1,102 @@
-import { site } from "@/config/site";
 import portrait from "@/assets/kelle-1.png";
-import { PhotoFrame } from "./PhotoPlaceholder";
+import { site } from "@/config/site";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
-import { Link } from "@tanstack/react-router";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative min-h-[92svh] overflow-hidden bg-ivory pt-24 lg:min-h-screen lg:pt-0">
-      <div className="mx-auto grid min-h-[calc(92svh-6rem)] max-w-[1440px] lg:min-h-screen lg:grid-cols-[58fr_42fr]">
-        <div className="relative z-10 flex items-center px-6 py-16 md:px-12 lg:px-20 xl:px-24">
-          <Reveal className="max-w-[780px]">
-            <p className="eyebrow border-b border-terracotta/35 pb-3">Psicologia • escuta • cuidado</p>
-            <h1 className="mt-8 text-[2.75rem] leading-[1.08] text-foreground sm:text-[4rem] lg:text-[4.8rem] xl:text-[5.4rem]">
-              Psicoterapia para quem quer compreender melhor o que acontece <em className="font-normal text-terracotta">aí dentro.</em>
-            </h1>
-            <p className="mt-8 max-w-lg text-[1rem] leading-relaxed text-taupe sm:text-[1.08rem]">
-              Um espaço profissional de escuta para adultos e crianças, construído com cuidado, responsabilidade e respeito a cada história.
-            </p>
-            <div className="mt-10 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-              <a href="#atendimentos" className="inline-flex items-center gap-4 bg-foreground px-7 py-4 text-[0.73rem] font-semibold tracking-[0.16em] uppercase text-primary-foreground transition-colors hover:bg-terracotta">
-                Conhecer os atendimentos <span className="editorial-arrow">→</span>
-              </a>
-              <WhatsAppLink location="home_hero" event="whatsapp_home_hero_click" target="home" className="link-underline text-[0.73rem] font-semibold tracking-[0.15em] uppercase text-foreground">
-                Conversar com Kelle
-              </WhatsAppLink>
+    <section id="inicio" className="relative min-h-[90vh] bg-[#F6F0EB] pt-24 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+      {/* Halo de luz suave de fundo no Hero */}
+      <div className="absolute top-1/4 right-1/4 size-[400px] rounded-full bg-[#E8DDD4]/50 blur-3xl pointer-events-none animate-glow-pulse" />
+
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-12 relative z-10">
+        <div className="grid items-center gap-12 lg:grid-cols-[54fr_46fr] lg:gap-14 xl:gap-16">
+          
+          {/* Coluna da Esquerda: Conteúdo de Texto */}
+          <Reveal direction="up" className="flex flex-col items-start space-y-6">
+            {/* Tagline superior */}
+            <div className="flex items-center gap-3">
+              <span className="h-[1px] w-6 bg-[#BA9485]" />
+              <span className="text-[0.68rem] font-bold tracking-[0.22em] uppercase text-[#BA9485] flex items-center gap-1.5">
+                <Sparkles className="size-3 text-[#BA9485]" />
+                PSICOLOGIA • ESCUTA • CUIDADO
+              </span>
             </div>
-            <p className="mt-12 text-[0.7rem] font-medium tracking-[0.17em] uppercase text-taupe">
-              Psicóloga em Goiânia • Atendimento online • CRP {site.crp}
+
+            {/* Título Principal H1 */}
+            <h1 className="font-serif text-[2.8rem] font-semibold leading-[1.08] text-[#3A2E2B] sm:text-[3.5rem] lg:text-[4rem] xl:text-[4.5rem] tracking-tight">
+              Psicóloga em Goiânia <span className="font-light text-[#BA9485]">|</span>
+              <br />
+              Atendimento online e
+              <br />
+              presencial
+            </h1>
+
+            {/* Subtítulo em itálico */}
+            <p className="font-serif italic text-[1.25rem] leading-relaxed text-[#A07365] sm:text-[1.4rem] font-medium">
+              Cuidar da sua saúde emocional pode ser mais leve do que você imagina.
+            </p>
+
+            {/* Parágrafo de descrição */}
+            <p className="max-w-[460px] text-[0.9rem] leading-relaxed text-[#6E5F57] font-normal">
+              Um espaço seguro, acolhedor e profissional para você se compreender, organizar seus sentimentos e viver com mais equilíbrio.
+            </p>
+
+            {/* Botões de Ação com Efeito Shimmer e Hover Dynamics */}
+            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto">
+              <WhatsAppLink
+                location="home_hero_primary"
+                event="whatsapp_home_hero_click"
+                target="home"
+                className="group relative overflow-hidden inline-flex items-center justify-center bg-[#382C26] border border-[#382C26] px-7 py-4 text-[0.72rem] font-bold tracking-[0.16em] uppercase text-white transition-all duration-300 hover:bg-[#524138] hover:shadow-lg active:scale-[0.98]"
+              >
+                {/* Linha de brilho sweep */}
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+                <span className="relative z-10 flex items-center gap-2">
+                  AGENDE SEU ATENDIMENTO
+                  <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </WhatsAppLink>
+
+              <a
+                href="#sobre"
+                className="inline-flex items-center justify-center bg-transparent border border-[#382C26] px-7 py-4 text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#382C26] transition-all duration-300 hover:bg-[#382C26] hover:text-white hover:shadow-md active:scale-[0.98]"
+              >
+                CONHEÇA MEU TRABALHO
+              </a>
+            </div>
+
+            {/* Rodapé da Seção (CRP / Cidade) */}
+            <p className="pt-3 text-[0.68rem] font-medium tracking-[0.18em] uppercase text-[#8E7D76]">
+              ATENDIMENTO EM GOIÂNIA E ONLINE - CRP {site.crp}
             </p>
           </Reveal>
-        </div>
 
-        <Reveal delay={100} className="relative min-h-[58svh] lg:min-h-screen">
-          <div className="image-reveal absolute inset-0">
-            <PhotoFrame src={portrait} alt="Retrato real de Kelle Tavares, psicóloga" width={765} height={1024} priority pending={false} className="h-full w-full" />
-          </div>
-          <p className="absolute right-6 bottom-8 z-10 border-t border-warm-white/60 pt-3 text-[0.65rem] font-medium tracking-[0.22em] uppercase text-warm-white lg:right-10 lg:bottom-12">
-            escuta, cuidado e presença.
-          </p>
-        </Reveal>
+          {/* Coluna da Direita: Moldura Fotográfica com Animação Flutuante */}
+          <Reveal direction="scale" delay={140} className="relative flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[400px] sm:max-w-[430px] lg:max-w-[450px] mr-2 mb-2 group">
+              
+              {/* Moldura Externa Traseira (Linha de Contorno Deslocada com Flutuação) */}
+              <div className="absolute -inset-3 translate-x-2.5 translate-y-2.5 border border-[#C8B6A9] pointer-events-none transition-transform duration-500 group-hover:translate-x-3.5 group-hover:translate-y-3.5" />
+
+              {/* Quadro da Foto com Borda Branca, Contorno Fino e Zoom Suave */}
+              <div className="relative border border-[#C8B6A9] bg-white p-2.5 shadow-md overflow-hidden transition-all duration-500 group-hover:shadow-xl">
+                <img
+                  src={portrait}
+                  alt="Kelle Tavares, Psicóloga em Goiânia"
+                  width={765}
+                  height={1024}
+                  className="w-full h-auto object-cover aspect-[3/4] block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                />
+              </div>
+
+            </div>
+          </Reveal>
+
+        </div>
       </div>
     </section>
   );
 }
+
