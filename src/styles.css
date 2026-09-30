@@ -461,6 +461,69 @@
   .animate-curtain-bottom {
     animation: curtainSlideDown 1.1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
   }
+
+  /* ✨ Micropartículas de Poeira Estelar */
+  @keyframes dustFloat {
+    0% {
+      transform: translateY(0px) translateX(0px) scale(0.8);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translateY(-25px) translateX(12px) scale(1.15);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(-50px) translateX(-8px) scale(0.8);
+      opacity: 0.1;
+    }
+  }
+
+  .animate-dust-particle {
+    animation: dustFloat 7s ease-in-out infinite;
+  }
+
+  /* 💎 Glass Mirror Sweep nos Cards */
+  .glass-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-sweep::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.28) 45%,
+      rgba(186, 148, 133, 0.25) 50%,
+      transparent 100%
+    );
+    transform: rotate(25deg);
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+    z-index: 15;
+  }
+
+  .glass-sweep:hover::before {
+    transform: translateX(380%) rotate(25deg);
+  }
+
+  /* 🎭 Z-Depth 3D Layers */
+  .translate-z-layer-sm {
+    transform: translateZ(20px);
+  }
+
+  .translate-z-layer-md {
+    transform: translateZ(40px);
+  }
+
+  .translate-z-layer-lg {
+    transform: translateZ(65px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -10,6 +10,14 @@ export function EditorialQuote() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[850px] sm:h-[850px] rounded-full bg-gradient-to-tr from-[#A07365]/35 via-[#C59B8B]/20 to-[#3A2E2B]/10 blur-[100px] pointer-events-none animate-aurora-glow" />
       <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-radial from-[#D8A798]/20 to-transparent blur-3xl pointer-events-none animate-float-slow" />
 
+      {/* Partículas de Poeira Estelar Translúcidas (Starlight Dust Glow) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0 opacity-60">
+        <div className="absolute top-[20%] left-[15%] size-2 rounded-full bg-[#D8A798]/40 blur-xs animate-dust-particle" style={{ animationDelay: "0s" }} />
+        <div className="absolute top-[40%] right-[20%] size-3 rounded-full bg-[#EFE4DC]/50 blur-xs animate-dust-particle" style={{ animationDelay: "2s" }} />
+        <div className="absolute bottom-[25%] left-[30%] size-2.5 rounded-full bg-[#C59B8B]/40 blur-xs animate-dust-particle" style={{ animationDelay: "4s" }} />
+        <div className="absolute bottom-[35%] right-[35%] size-2 rounded-full bg-[#F6F0EB]/60 blur-xs animate-dust-particle" style={{ animationDelay: "1s" }} />
+      </div>
+
       <div className="relative z-10 mx-auto max-w-[1240px] px-6 sm:px-10 lg:px-12 text-center">
         <Reveal direction="scale" className="flex flex-col items-center">
           

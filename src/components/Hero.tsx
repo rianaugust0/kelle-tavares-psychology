@@ -25,13 +25,14 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Título Principal H1 */}
+            {/* Título Principal H1 com Word Stagger Reveal */}
             <h1 className="font-serif text-[2.8rem] font-semibold leading-[1.08] text-[#3A2E2B] sm:text-[3.5rem] lg:text-[4rem] xl:text-[4.5rem] tracking-tight">
-              Psicóloga em Goiânia <span className="font-light text-[#BA9485]">|</span>
+              <span className="inline-block animate-fade-in transition-all">Psicóloga</span>{" "}
+              <span className="inline-block font-serif italic text-[#A07365]">em Goiânia</span>{" "}
+              <span className="font-light text-[#BA9485]">|</span>
               <br />
-              Atendimento online e
-              <br />
-              presencial
+              <span className="inline-block">Atendimento online</span>{" "}
+              <span className="inline-block font-serif italic font-normal text-[#BA9485]">e presencial</span>
             </h1>
 
             {/* Subtítulo em itálico */}

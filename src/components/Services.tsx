@@ -125,7 +125,7 @@ export function Services() {
           
           {/* Coluna da Esquerda: Card da Foto com Etiqueta sobreposta no Rodapé */}
           <Reveal direction="left" delay={120} className="flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden border border-[#D9C8BC] bg-white shadow-md group">
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden border border-[#D9C8BC] bg-white shadow-md group glass-sweep">
               <img
                 src={activeTab.image}
                 alt={activeTab.title}
