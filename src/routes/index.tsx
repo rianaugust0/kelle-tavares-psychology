@@ -5,8 +5,6 @@ import { Services } from "@/components/Services";
 import { About } from "@/components/About";
 import { EditorialQuote } from "@/components/EditorialQuote";
 import { TherapyProcess } from "@/components/TherapyProcess";
-import { Career } from "@/components/Career";
-import { Modality } from "@/components/Modality";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
@@ -81,19 +79,13 @@ function Index() {
         {/* 4. FRASE EDITORIAL (Bloco Café para momento de impacto e quebra visual) */}
         <EditorialQuote />
 
-        {/* 5. COMO FUNCIONA (3 passos do acompanhamento) */}
+        {/* 5. COMO FUNCIONA (4 passos do acompanhamento) */}
         <TherapyProcess />
 
-        {/* 6. AUTORIDADE RESUMIDA (+3 anos + Formação + Foto espontânea) */}
-        <Career />
-
-        {/* 7. ATENDIMENTO ONLINE (Informação prática) */}
-        <Modality />
-
-        {/* 8. DÚVIDAS ANTES DE COMEÇAR (FAQ de redução de objeções com link para WhatsApp) */}
+        {/* 6. DÚVIDAS ANTES DE COMEÇAR (FAQ de redução de objeções) */}
         <FAQ />
 
-        {/* 9. CTA FINAL CAFÉ (Conversão direta) */}
+        {/* 7. CTA FINAL (Conversão direta para WhatsApp) */}
         <Contact />
       </main>
       <Footer />
