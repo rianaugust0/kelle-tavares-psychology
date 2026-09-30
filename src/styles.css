@@ -413,6 +413,54 @@
     opacity: 1;
     transform: scale(1);
   }
+
+  /* 🌌 Aurora Glow Fluida */
+  @keyframes auroraMove {
+    0% {
+      transform: translate(0%, 0%) rotate(0deg) scale(1);
+    }
+    33% {
+      transform: translate(15%, -10%) rotate(120deg) scale(1.12);
+    }
+    66% {
+      transform: translate(-10%, 12%) rotate(240deg) scale(0.95);
+    }
+    100% {
+      transform: translate(0%, 0%) rotate(360deg) scale(1);
+    }
+  }
+
+  .animate-aurora-glow {
+    animation: auroraMove 18s ease-in-out infinite alternate;
+  }
+
+  /* 🎭 3D Perspective & Tilt Container */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  /* 🎭 Curtain Entrance Splash Screen */
+  @keyframes curtainSlideUp {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); }
+  }
+
+  @keyframes curtainSlideDown {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(100%); }
+  }
+
+  .animate-curtain-top {
+    animation: curtainSlideUp 1.1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
+
+  .animate-curtain-bottom {
+    animation: curtainSlideDown 1.1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

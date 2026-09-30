@@ -6,8 +6,9 @@ export function EditorialQuote() {
   return (
     <section className="relative bg-[#2D2320] py-24 sm:py-32 lg:py-36 text-[#F6F0EB] overflow-hidden border-t border-[#4A3E3A]">
       
-      {/* Brilho Radial Aconchegante ao Fundo com Pulsar (Glow Effect) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] rounded-full bg-radial from-[#A07365]/25 via-[#3A2E2B]/10 to-transparent blur-3xl pointer-events-none animate-glow-pulse" />
+      {/* Aurora / Névoa Orgânica Fluida de Fundo (Fluid Organic Glow) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] sm:w-[850px] sm:h-[850px] rounded-full bg-gradient-to-tr from-[#A07365]/35 via-[#C59B8B]/20 to-[#3A2E2B]/10 blur-[100px] pointer-events-none animate-aurora-glow" />
+      <div className="absolute top-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-radial from-[#D8A798]/20 to-transparent blur-3xl pointer-events-none animate-float-slow" />
 
       <div className="relative z-10 mx-auto max-w-[1240px] px-6 sm:px-10 lg:px-12 text-center">
         <Reveal direction="scale" className="flex flex-col items-center">

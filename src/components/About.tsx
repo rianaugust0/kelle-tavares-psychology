@@ -3,6 +3,7 @@ import { site } from "@/config/site";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
 import { AnimatedCounter } from "./AnimatedCounter";
+import { TiltCard } from "./TiltCard";
 import { MessageCircle, Video, User, Sparkles, MapPin, ArrowRight } from "lucide-react";
 
 export function About() {
@@ -57,7 +58,7 @@ export function About() {
 
           {/* Coluna da Direita: Moldura Redonda com Halo + Badges Flutuantes Animados */}
           <Reveal direction="right" delay={150} className="relative flex justify-center lg:justify-end my-6 lg:my-0">
-            <div className="relative w-full max-w-[380px] sm:max-w-[420px] lg:max-w-[440px] group">
+            <TiltCard maxTilt={5} className="w-full max-w-[380px] sm:max-w-[420px] lg:max-w-[440px] group">
               
               {/* Anel de Fundo Circular (Halo de Luz Warm com Pulsar) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] sm:w-[380px] sm:h-[380px] rounded-full border border-[#D9C8BC]/70 bg-gradient-to-tr from-[#EFE6DF]/60 to-transparent pointer-events-none animate-spin-slow" />
@@ -95,7 +96,7 @@ export function About() {
                 </div>
               </div>
 
-            </div>
+            </TiltCard>
           </Reveal>
 
         </div>

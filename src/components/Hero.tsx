@@ -2,6 +2,7 @@ import portrait from "@/assets/kelle-1.png";
 import { site } from "@/config/site";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export function Hero() {
@@ -73,9 +74,9 @@ export function Hero() {
             </p>
           </Reveal>
 
-          {/* Coluna da Direita: Moldura Fotográfica com Animação Flutuante */}
+          {/* Coluna da Direita: Moldura Fotográfica 3D Interativa com TiltCard */}
           <Reveal direction="scale" delay={140} className="relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[400px] sm:max-w-[430px] lg:max-w-[450px] mr-2 mb-2 group">
+            <TiltCard maxTilt={6} className="w-full max-w-[400px] sm:max-w-[430px] lg:max-w-[450px] mr-2 mb-2 group">
               
               {/* Moldura Externa Traseira (Linha de Contorno Deslocada com Flutuação) */}
               <div className="absolute -inset-3 translate-x-2.5 translate-y-2.5 border border-[#C8B6A9] pointer-events-none transition-transform duration-500 group-hover:translate-x-3.5 group-hover:translate-y-3.5" />
@@ -91,7 +92,7 @@ export function Hero() {
                 />
               </div>
 
-            </div>
+            </TiltCard>
           </Reveal>
 
         </div>

@@ -10,7 +10,8 @@ import { Modality } from "@/components/Modality";
 import { FAQ } from "@/components/FAQ";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
-import { HomeIdentification } from "@/components/HomeIdentification";
+import { SplashCurtain } from "@/components/SplashCurtain";
+import { LuxuryCursor } from "@/components/LuxuryCursor";
 import { site, seoConfig, absoluteUrl } from "@/config/site";
 
 const seo = seoConfig.home;
@@ -66,6 +67,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <SplashCurtain />
+      <LuxuryCursor />
       <Header />
       <main>
         {/* 1. HERO (Seção 1) */}

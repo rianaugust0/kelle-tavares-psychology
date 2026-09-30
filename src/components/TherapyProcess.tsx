@@ -32,8 +32,11 @@ export function TherapyProcess() {
         {/* Grade de 4 Cards Elegantes dos Passos com Linha de Fluxo Animada */}
         <div className="relative">
           
-          {/* Linha Conectora de Fluxo Animada entre os Cards no Desktop */}
-          <div className="hidden lg:block absolute top-[52px] left-[10%] right-[10%] h-[2px] animate-line-flow opacity-40 pointer-events-none z-0" />
+          {/* Linha Conectora de Fluxo Animada com Brilho Terracota no Desktop */}
+          <div className="hidden lg:block absolute top-[52px] left-[8%] right-[8%] h-[3px] z-0 pointer-events-none">
+            <div className="w-full h-full animate-line-flow opacity-60 rounded-full" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#A07365]/40 to-transparent blur-xs animate-pulse" />
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {processSteps.map((step, i) => {
