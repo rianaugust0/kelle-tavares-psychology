@@ -25,7 +25,7 @@ export function FloatingWhatsApp() {
   const url = getWhatsAppUrl(target);
 
   return (
-    <aside aria-label="Contato rápido via WhatsApp" className="fixed bottom-6 right-6 z-40">
+    <aside aria-label="Contato rápido via WhatsApp" className="fixed bottom-6 right-6 z-40 hidden lg:block">
       <a
         href={url}
         target="_blank"

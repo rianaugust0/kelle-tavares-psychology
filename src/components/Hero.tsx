@@ -18,14 +18,14 @@ export function Hero() {
           {/* Coluna da Esquerda: Conteúdo de Texto */}
           <Reveal direction="up" className="flex flex-col items-start space-y-6">
             
-            {/* Badge Flutuante de Status de Atendimento Live */}
-            <div className="inline-flex items-center gap-2.5 bg-white/90 border border-[#D9C8BC] px-4 py-1.5 rounded-full shadow-xs backdrop-blur-md animate-pulse-ring">
+            {/* Badge Flutuante de Status de Atendimento Live (Verde Ativo / Chama Atenção) */}
+            <div className="inline-flex items-center gap-2.5 bg-white/95 border border-emerald-500/30 px-4 py-1.5 rounded-full shadow-md backdrop-blur-md">
               <span className="relative flex size-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#A07365] opacity-75" />
-                <span className="relative inline-flex size-2.5 rounded-full bg-[#7E655B]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
               </span>
-              <span className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-[#3A2E2B]">
-                Agenda Aberta • Goiânia & Online
+              <span className="text-[0.68rem] font-extrabold tracking-[0.16em] uppercase text-[#3A2E2B]">
+                <span className="text-emerald-700">AGENDA ABERTA</span> • GOIÂNIA & ONLINE
               </span>
             </div>
 
@@ -38,9 +38,9 @@ export function Hero() {
               </span>
             </div>
 
-            {/* Título Principal H1 com Word Stagger Reveal */}
+            {/* Título Principal H1 em Tom Escuro Nitido e Sofisticado */}
             <h1 className="font-serif text-[2.8rem] font-semibold leading-[1.08] text-[#3A2E2B] sm:text-[3.5rem] lg:text-[4rem] xl:text-[4.5rem] tracking-tight">
-              <span className="inline-block transition-all">Psicóloga</span>{" "}
+              <span className="inline-block">Psicóloga</span>{" "}
               <span className="inline-block font-serif italic text-metallic-gold">em Goiânia</span>{" "}
               <span className="font-light text-[#BA9485]">|</span>
               <br />
@@ -48,8 +48,8 @@ export function Hero() {
               <span className="inline-block font-serif italic font-normal text-[#BA9485]">e presencial</span>
             </h1>
 
-            {/* Subtítulo em itálico */}
-            <p className="font-serif italic text-[1.25rem] leading-relaxed text-[#A07365] sm:text-[1.4rem] font-medium">
+            {/* Subtítulo em itálico com Alta Visibilidade e Contraste */}
+            <p className="font-serif italic text-[1.35rem] sm:text-[1.55rem] leading-relaxed text-[#3A2E2B] font-semibold">
               Cuidar da sua saúde emocional pode ser mais leve do que você imagina.
             </p>
 

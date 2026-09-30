@@ -11,13 +11,17 @@ export function Contact() {
 
       <div className="mx-auto max-w-[940px] px-6 text-center md:px-10 relative z-10">
         <Reveal direction="scale">
-          {/* Badge Live de Resposta Rápida */}
-          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full mb-6 backdrop-blur-md">
-            <span className="size-2 rounded-full bg-[#BA9485] animate-ping" />
-            <span className="text-[0.68rem] font-bold tracking-[0.2em] uppercase text-[#F6F0EB]">
-              Respondo em até 1h via WhatsApp
+          {/* Badge Live de Resposta Rápida (Alta Visibilidade / Verde Ativo) */}
+          <div className="inline-flex items-center gap-2.5 bg-[#1F2E24] border-2 border-emerald-400/80 px-4.5 py-2 rounded-full mb-6 backdrop-blur-md shadow-[0_0_20px_rgba(16,185,129,0.35)]">
+            <span className="relative flex size-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-90" />
+              <span className="relative inline-flex size-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#34D399]" />
+            </span>
+            <span className="text-[0.72rem] font-black tracking-[0.18em] uppercase text-emerald-300">
+              RESPONDO EM ATÉ 1H VIA WHATSAPP
             </span>
           </div>
+
 
           <div className="flex items-center justify-center gap-3">
             <span className="h-[1px] w-6 bg-[#BA9485]" />
