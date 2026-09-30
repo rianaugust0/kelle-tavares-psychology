@@ -1,9 +1,6 @@
 [build]
-  command = "npm run build"
+  command = "bun run build"
   publish = "dist"
-
-[build.environment]
-  NODE_VERSION = "20.18.0"
 
 [[redirects]]
   from = "/*"
