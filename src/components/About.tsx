@@ -101,40 +101,40 @@ export function About() {
 
         </div>
 
-        {/* Bloco Inferior: Barra Horizontal Resumo (Cards + CTA Agendar Sessão com Stagger) */}
+        {/* Bloco Inferior: Barra Horizontal Resumo em Glassmorphism de Luxo */}
         <Reveal direction="up" delay={220} className="mt-16 sm:mt-20 w-full">
-          <div className="w-full rounded-2xl border border-[#D9C8BC]/80 bg-white/80 p-3 sm:p-4 shadow-xs backdrop-blur-xs">
+          <div className="w-full rounded-2xl glassmorphism-card p-3 sm:p-4 shadow-sm border border-white/90">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-center">
               
               {/* Card 1: Profissional */}
-              <div className="flex items-center gap-3 bg-[#F9F6F3] p-3 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485]/50 hover:bg-white hover:-translate-y-0.5">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-white text-[#7E655B] shadow-xs shrink-0">
+              <div className="flex items-center gap-3 bg-white/90 p-3.5 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485] hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex size-9 items-center justify-center rounded-lg bg-[#F6F0EB] text-[#7E655B] shadow-xs shrink-0">
                   <User className="size-4" />
                 </div>
                 <div>
-                  <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-[#8E7D76]">PROFISSIONAL</p>
+                  <p className="text-[0.6rem] font-bold uppercase tracking-wider text-[#8E7D76]">PROFISSIONAL</p>
                   <p className="text-[0.78rem] font-bold text-[#3A2E2B]">Kelle Tavares • CRP {site.crp}</p>
                 </div>
               </div>
 
               {/* Card 2: Especialidade */}
-              <div className="flex items-center gap-3 bg-[#F9F6F3] p-3 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485]/50 hover:bg-white hover:-translate-y-0.5">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-white text-[#7E655B] shadow-xs shrink-0">
+              <div className="flex items-center gap-3 bg-white/90 p-3.5 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485] hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex size-9 items-center justify-center rounded-lg bg-[#F6F0EB] text-[#7E655B] shadow-xs shrink-0">
                   <Sparkles className="size-4" />
                 </div>
                 <div>
-                  <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-[#8E7D76]">ESPECIALIDADE</p>
+                  <p className="text-[0.6rem] font-bold uppercase tracking-wider text-[#8E7D76]">ESPECIALIDADE</p>
                   <p className="text-[0.78rem] font-bold text-[#3A2E2B]">Adultos & ABA Infantil</p>
                 </div>
               </div>
 
               {/* Card 3: Atendimento */}
-              <div className="flex items-center gap-3 bg-[#F9F6F3] p-3 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485]/50 hover:bg-white hover:-translate-y-0.5">
-                <div className="flex size-9 items-center justify-center rounded-lg bg-white text-[#7E655B] shadow-xs shrink-0">
+              <div className="flex items-center gap-3 bg-white/90 p-3.5 rounded-xl border border-[#EFE6DF] transition-all duration-300 hover:border-[#BA9485] hover:shadow-md hover:-translate-y-0.5">
+                <div className="flex size-9 items-center justify-center rounded-lg bg-[#F6F0EB] text-[#7E655B] shadow-xs shrink-0">
                   <MapPin className="size-4" />
                 </div>
                 <div>
-                  <p className="text-[0.6rem] font-semibold uppercase tracking-wider text-[#8E7D76]">ATENDIMENTO</p>
+                  <p className="text-[0.6rem] font-bold uppercase tracking-wider text-[#8E7D76]">ATENDIMENTO</p>
                   <p className="text-[0.78rem] font-bold text-[#3A2E2B]">Online & Goiânia (GO)</p>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export function About() {
                 location="about_summary_bar"
                 event="whatsapp_about_summary_click"
                 target="home"
-                className="group relative overflow-hidden flex items-center justify-center gap-2 bg-[#8C6353] hover:bg-[#775244] text-white p-3.5 rounded-xl font-bold text-[0.75rem] tracking-[0.14em] uppercase transition-all duration-300 shadow-xs hover:shadow-md active:scale-[0.98]"
+                className="group relative overflow-hidden flex items-center justify-center gap-2 bg-[#8C6353] hover:bg-[#775244] text-white p-3.5 rounded-xl font-bold text-[0.75rem] tracking-[0.14em] uppercase transition-all duration-300 shadow-md hover:shadow-lg active:scale-[0.98]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
                 <span>AGENDAR SESSÃO</span>
@@ -154,6 +154,7 @@ export function About() {
             </div>
           </div>
         </Reveal>
+
 
       </div>
     </section>

@@ -46,15 +46,15 @@ export function TherapyProcess() {
                   key={step.index}
                   direction="up"
                   delay={i * 120}
-                  className="group relative flex flex-col justify-between bg-white/95 border border-[#D9C8BC]/80 rounded-2xl p-7 shadow-xs hover:shadow-xl hover:border-[#A07365]/60 hover:-translate-y-2.5 transition-all duration-500 ease-out"
+                  className="group relative flex flex-col justify-between glassmorphism-card border border-[#D9C8BC]/90 rounded-2xl p-7 shadow-sm hover:shadow-2xl hover:border-[#BA9485] hover:-translate-y-3 transition-all duration-500 ease-out"
                 >
                   <div>
                     {/* Topo do Card: Número + Ícone Interativo */}
                     <div className="flex items-center justify-between mb-6">
-                      <span className="font-serif text-[1.25rem] font-bold text-[#A07365] bg-[#EFE6DF] group-hover:bg-[#A07365] group-hover:text-white px-3 py-1 rounded-xl transition-colors duration-300">
+                      <span className="font-serif text-[1.25rem] font-bold text-[#3A2E2B] bg-[#EFE6DF] group-hover:bg-[#3A2E2B] group-hover:text-white px-3 py-1 rounded-xl transition-all duration-300 shadow-xs">
                         {step.index}
                       </span>
-                      <div className="flex size-11 items-center justify-center rounded-xl bg-[#F6F0EB] text-[#7E655B] group-hover:bg-[#3A2E2B] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-xs">
+                      <div className="flex size-12 items-center justify-center rounded-2xl bg-white text-[#7E655B] group-hover:bg-[#3A2E2B] group-hover:text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-sm border border-[#EFE6DF]">
                         <IconComp className="size-5" />
                       </div>
                     </div>
@@ -79,6 +79,7 @@ export function TherapyProcess() {
               );
             })}
           </div>
+
         </div>
 
         {/* Rodapé do Bloco com Botão de Ação e Garantia */}

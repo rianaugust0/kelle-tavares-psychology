@@ -524,7 +524,43 @@
   .translate-z-layer-lg {
     transform: translateZ(65px);
   }
+
+  /* 🌟 Anéis de Pulso & Efeitos de Luxo */
+  @keyframes pulseRing {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(186, 148, 133, 0.6);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 12px rgba(186, 148, 133, 0);
+    }
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgba(186, 148, 133, 0);
+    }
+  }
+
+  .animate-pulse-ring {
+    animation: pulseRing 2.4s infinite cubic-bezier(0.45, 0, 0.55, 1);
+  }
+
+  /* 🥇 Gradiente Metálico Rose-Gold */
+  .text-metallic-gold {
+    background: linear-gradient(135deg, #3A2E2B 0%, #A07365 40%, #BA9485 70%, #52423D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 🧊 Glassmorphism de Luxo */
+  .glassmorphism-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(217, 200, 188, 0.7);
+  }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   html {

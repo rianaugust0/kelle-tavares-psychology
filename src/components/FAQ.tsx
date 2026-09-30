@@ -28,60 +28,69 @@ export function FAQ() {
   ];
 
   return (
-    <section id="duvidas" className="border-t border-border py-20 md:py-28 bg-blush/35">
-      <div className="mx-auto max-w-[1240px] px-6 md:px-10">
-        <div className="grid gap-12 lg:grid-cols-[38fr_62fr] lg:gap-20">
+    <section id="duvidas" className="relative border-t border-[#D9C8BC]/40 py-20 lg:py-28 bg-[#F6F0EB] overflow-hidden">
+      {/* Halo de luz ambiente no FAQ */}
+      <div className="absolute top-1/3 left-10 size-[380px] rounded-full bg-[#EAE0D6]/50 blur-3xl pointer-events-none" />
+
+      <div className="mx-auto max-w-[1280px] px-6 sm:px-10 lg:px-12 relative z-10">
+        <div className="grid gap-12 lg:grid-cols-[38fr_62fr] lg:gap-20 items-start">
+          
           <Reveal direction="left">
-            <div className="flex items-center gap-3">
-              <span className="h-px w-8 bg-terracotta" />
-              <p className="eyebrow text-terracotta font-semibold">Dúvidas</p>
+            <div className="flex items-center gap-3 mb-3">
+              <span className="h-[1px] w-6 bg-[#BA9485]" />
+              <span className="text-[0.68rem] font-bold tracking-[0.24em] uppercase text-[#BA9485]">
+                DÚVIDAS FREQUENTES
+              </span>
             </div>
-            <h2 className="mt-5 text-[2.4rem] leading-tight text-foreground sm:text-[3.2rem]">
+            
+            <h2 className="font-serif text-[2.4rem] font-semibold leading-[1.12] text-[#3A2E2B] sm:text-[3.2rem] lg:text-[3.5rem] tracking-tight">
               Talvez você esteja se perguntando...
             </h2>
-            <p className="mt-4 text-[1.05rem] leading-relaxed text-taupe">
-              Perguntas frequentes para esclarecer pontos práticos antes de dar o primeiro passo.
+            <p className="mt-4 text-[0.92rem] leading-relaxed text-[#6E5F57]">
+              Esclareça os pontos práticos e sinta-se inteiramente à vontade para dar o primeiro passo.
             </p>
 
-            <div className="mt-8 pt-6 border-t border-border/80 hidden lg:block">
-              <p className="text-[0.88rem] text-taupe font-medium">Ainda tem alguma dúvida?</p>
+            <div className="mt-8 pt-6 border-t border-[#D9C8BC]/60 hidden lg:block">
+              <p className="text-[0.85rem] text-[#6E5F57] font-medium">Ficou com alguma dúvida específica?</p>
               <WhatsAppLink
                 location="faq_sidebar"
-                className="group mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                className="group mt-3 inline-flex items-center gap-2 text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#3A2E2B] transition-colors duration-200 hover:text-[#7E655B]"
               >
-                <span>Conversar com Kelle</span>
+                <span>CONVERSAR NO WHATSAPP</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
               </WhatsAppLink>
             </div>
           </Reveal>
 
-          <Reveal direction="right" delay={120}>
-            <Accordion type="single" collapsible className="w-full divide-y divide-border border-y border-border">
+          <Reveal direction="right" delay={120} className="glassmorphism-card p-6 sm:p-8 rounded-2xl shadow-sm border border-[#D9C8BC]">
+            <Accordion type="single" collapsible className="w-full divide-y divide-[#EFE6DF]">
               {homeFaq.map((item, i) => (
-                <AccordionItem key={item.q} value={`item-${i}`} className="border-none py-2.5">
-                  <AccordionTrigger className="text-left font-serif text-[1.3rem] font-normal text-foreground hover:no-underline hover:text-terracotta transition-colors duration-200 sm:text-[1.45rem]">
+                <AccordionItem key={item.q} value={`item-${i}`} className="border-none py-3">
+                  <AccordionTrigger className="text-left font-serif text-[1.25rem] font-semibold text-[#3A2E2B] hover:no-underline hover:text-[#A07365] transition-colors duration-200 sm:text-[1.4rem]">
                     {item.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-[0.98rem] leading-relaxed text-taupe pt-1.5 pb-4">
+                  <AccordionContent className="text-[0.9rem] leading-relaxed text-[#6E5F57] pt-2 pb-4 font-sans">
                     {item.a}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
 
-            <div className="mt-8 pt-6 border-t border-border/80 lg:hidden">
-              <p className="text-[0.88rem] text-taupe font-medium">Ainda tem alguma dúvida?</p>
+            <div className="mt-6 pt-6 border-t border-[#EFE6DF] lg:hidden">
+              <p className="text-[0.85rem] text-[#6E5F57] font-medium">Ficou com alguma dúvida específica?</p>
               <WhatsAppLink
                 location="faq_bottom"
-                className="group mt-2 inline-flex items-center gap-1.5 text-[0.8rem] font-bold tracking-[0.14em] uppercase text-terracotta transition-colors duration-200 hover:text-foreground"
+                className="group mt-2.5 inline-flex items-center gap-2 text-[0.72rem] font-bold tracking-[0.16em] uppercase text-[#3A2E2B] transition-colors duration-200 hover:text-[#7E655B]"
               >
-                <span>Conversar com Kelle</span>
+                <span>CONVERSAR NO WHATSAPP</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1.5">→</span>
               </WhatsAppLink>
             </div>
           </Reveal>
+
         </div>
       </div>
     </section>
+
   );
 }

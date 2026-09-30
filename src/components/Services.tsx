@@ -99,7 +99,7 @@ export function Services() {
           </p>
         </Reveal>
 
-        {/* Abas / Filtros Interativos (Pills) com Animação de Seleção */}
+        {/* Abas / Filtros Interativos (Pills) com Animação de Seleção em Glassmorphism */}
         <Reveal direction="up" delay={100} className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5 mb-14 lg:mb-16">
           {TABS.map((tab) => {
             const isActive = tab.id === activeTabId;
@@ -108,10 +108,10 @@ export function Services() {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTabId(tab.id)}
-                className={`px-5 py-2.5 rounded-full text-[0.78rem] font-medium transition-all duration-300 cursor-pointer ${
+                className={`relative px-6 py-3 rounded-full text-[0.78rem] font-bold tracking-wide transition-all duration-300 cursor-pointer ${
                   isActive
-                    ? "bg-[#3A2E2B] text-white border border-[#3A2E2B] shadow-md scale-105"
-                    : "bg-[#F9F5F1] text-[#6E5F57] border border-[#D9C8BC] hover:border-[#3A2E2B] hover:text-[#3A2E2B] hover:scale-102"
+                    ? "bg-[#3A2E2B] text-white border border-[#3A2E2B] shadow-lg scale-105"
+                    : "glassmorphism-card text-[#5E5049] border-[#D9C8BC] hover:border-[#3A2E2B] hover:text-[#3A2E2B] hover:scale-102"
                 }`}
               >
                 {tab.label}
@@ -125,7 +125,7 @@ export function Services() {
           
           {/* Coluna da Esquerda: Card da Foto com Etiqueta sobreposta no Rodapé */}
           <Reveal direction="left" delay={120} className="flex justify-center lg:justify-start">
-            <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden border border-[#D9C8BC] bg-white shadow-md group glass-sweep">
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden border border-[#D9C8BC] bg-white shadow-xl group glass-sweep">
               <img
                 src={activeTab.image}
                 alt={activeTab.title}
@@ -135,11 +135,11 @@ export function Services() {
               />
               
               {/* Barra de Legenda Inferior Sobreposta */}
-              <div className="absolute inset-x-3 bottom-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-xl border border-[#EFE6DF] flex items-center justify-between shadow-xs transition-transform duration-300 group-hover:translate-y-[-2px]">
-                <span className="text-[0.72rem] font-semibold text-[#4A3E38]">
+              <div className="absolute inset-x-3 bottom-3 bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-[#EFE6DF] flex items-center justify-between shadow-md transition-transform duration-300 group-hover:translate-y-[-2px]">
+                <span className="text-[0.75rem] font-bold text-[#3A2E2B]">
                   {activeTab.badgeLabel}
                 </span>
-                <span className="text-[0.72rem] font-medium text-[#8E7D76]">
+                <span className="text-[0.68rem] font-bold tracking-wider uppercase text-[#8E7D76]">
                   CRP {site.crp}
                 </span>
               </div>
@@ -168,9 +168,9 @@ export function Services() {
             {/* Lista de Benefícios / Tópicos de Atuação (Checklist com Micro-hover) */}
             <ul className="space-y-3.5 mb-8 w-full max-w-[560px]">
               {activeTab.bullets.map((bullet, idx) => (
-                <li key={idx} className="group/item flex items-start gap-3 transition-transform duration-200 hover:translate-x-1">
-                  <div className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#EFE4DC] text-[#A07365] mt-0.5 transition-colors duration-200 group-hover/item:bg-[#3A2E2B] group-hover/item:text-white">
-                    <Check className="size-3 stroke-[2.5]" />
+                <li key={idx} className="group/item flex items-start gap-3 transition-transform duration-200 hover:translate-x-1.5">
+                  <div className="flex size-5.5 shrink-0 items-center justify-center rounded-full bg-[#EFE4DC] text-[#7E655B] mt-0.5 transition-colors duration-200 group-hover/item:bg-[#3A2E2B] group-hover/item:text-white shadow-xs">
+                    <Check className="size-3.5 stroke-[2.5]" />
                   </div>
                   <span className="text-[0.88rem] leading-snug text-[#4A3E38] font-normal group-hover/item:text-[#3A2E2B]">
                     {bullet}
@@ -178,6 +178,7 @@ export function Services() {
                 </li>
               ))}
             </ul>
+
 
             {/* Frase com Destaque Manuscrito em Itálico */}
             <p className="font-serif italic text-[1.2rem] sm:text-[1.32rem] text-[#A07365] mb-7">
