@@ -1,25 +1,52 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Sparkles } from "lucide-react";
 
 const FULL_NAME = "Kelle Tavares";
+const SESSION_STORAGE_KEY = "kelle_splash_seen";
 
 export const SplashCurtain: React.FC = () => {
-  const [typedText, setTypedText] = useState<string>("");
-  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
-  const [isRevealed, setIsRevealed] = useState<boolean>(false);
-  const [isOpening, setIsOpening] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(true);
+  const [typedText, setTypedText] = useState<string>("");
+  const [isTopTaglineVisible, setIsTopTaglineVisible] = useState<boolean>(false);
+  const [isTypingComplete, setIsTypingComplete] = useState<boolean>(false);
+  const [isBottomSubtitleVisible, setIsBottomSubtitleVisible] = useState<boolean>(false);
+  const [isLeaping, setIsLeaping] = useState<boolean>(false);
+  const [isOpening, setIsOpening] = useState<boolean>(false);
+
+  const finishAndUnmount = useCallback(() => {
+    try {
+      sessionStorage.setItem(SESSION_STORAGE_KEY, "true");
+    } catch {
+      // Ignore storage errors if private browsing blocks it
+    }
+    setIsMounted(false);
+    document.body.style.overflow = "";
+  }, []);
+
+  const triggerSkip = useCallback(() => {
+    if (isOpening) return;
+    setIsOpening(true);
+    setTimeout(finishAndUnmount, 600);
+  }, [isOpening, finishAndUnmount]);
 
   useEffect(() => {
+    // Verifica imediatamente se já foi exibido nesta sessão do navegador
+    try {
+      if (sessionStorage.getItem(SESSION_STORAGE_KEY)) {
+        setIsMounted(false);
+        return;
+      }
+    } catch {
+      // Ignore
+    }
+
     // Bloqueia a rolagem durante a abertura da cortina
     document.body.style.overflow = "hidden";
 
-    // 1. Revela o halo de luz e as linhas após 300ms
-    const revealTimer = setTimeout(() => {
-      setIsRevealed(true);
-    }, 300);
+    // 1. PASSO 1: Aos 0ms (instantâneo), revela o título principal "PSICOLOGIA CLÍNICA & DESENVOLVIMENTO"
+    setIsTopTaglineVisible(true);
 
-    // 2. Aguarda 1.0 SEGUNDO INTEIRO em tela limpa com apenas o cursor piscando antes de digitar
+    // 2. PASSO 2: Aos 50ms, inicia a digitação cadenciada e graciosa de "Kelle Tavares" (~90ms por caractere, ~1.2s total)
     let charIndex = 0;
     let timeoutId: ReturnType<typeof setTimeout>;
 
@@ -27,128 +54,189 @@ export const SplashCurtain: React.FC = () => {
       if (charIndex < FULL_NAME.length) {
         charIndex++;
         setTypedText(FULL_NAME.slice(0, charIndex));
-
-        // Digitação bem cadenciada e pausada: 180ms por caractere (e 300ms no espaço)
-        const nextDelay = FULL_NAME[charIndex - 1] === " " ? 300 : 180;
+        const nextDelay = FULL_NAME[charIndex - 1] === " " ? 140 : 90;
         timeoutId = setTimeout(typeNextChar, nextDelay);
       } else {
+        // Digitação do nome concluída com extrema elegância!
         setIsTypingComplete(true);
+
+        // 3. PASSO 3: Pausa de 200ms e o subtítulo desliza elegantemente nos 2 segundos escolhidos
+        setTimeout(() => {
+          setIsBottomSubtitleVisible(true);
+
+          // 4. PASSO 4: Abertura triunfal da cortina após o deslize de 2 segundos
+          setTimeout(() => {
+            setIsLeaping(true);
+            setIsOpening(true);
+          }, 2100);
+        }, 200);
       }
     };
 
-    // A primeira letra "K" só começa a ser digitada após 1000ms (1 segundo inteiro)
-    const initialDelayTimer = setTimeout(typeNextChar, 1000);
+    const initialTypingTimer = setTimeout(typeNextChar, 50);
 
-    // 3. Aos 5500ms a cortina abre com física suave
-    const timerOpen = setTimeout(() => {
-      setIsOpening(true);
-    }, 5500);
-
-    // 4. Aos 6800ms o componente é desmontado e a rolagem é liberada
+    // Desmonta o componente após todo o ritual (~4000ms no total)
     const timerUnmount = setTimeout(() => {
-      setIsMounted(false);
-      document.body.style.overflow = "";
-    }, 6800);
+      finishAndUnmount();
+    }, 4000);
 
     return () => {
-      clearTimeout(revealTimer);
-      clearTimeout(initialDelayTimer);
+      clearTimeout(initialTypingTimer);
       clearTimeout(timeoutId);
-      clearTimeout(timerOpen);
       clearTimeout(timerUnmount);
       document.body.style.overflow = "";
     };
-  }, []);
+  }, [finishAndUnmount]);
 
   if (!isMounted) return null;
 
   return (
-    <div className="fixed inset-0 z-[99999] pointer-events-none overflow-hidden select-none perspective-1000">
-      
-      {/* 1. Painel Superior da Cortina (Marfim Quente Editorial) */}
-      <div
-        className={`absolute top-0 inset-x-0 h-1/2 bg-[#F6F0EB] shadow-2xl transition-transform duration-1200 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-transform ${
-          isOpening ? "-translate-y-full" : "translate-y-0"
-        }`}
-      />
+    <div
+      onClick={triggerSkip}
+      className={`fixed inset-0 z-[99999] cursor-pointer select-none overflow-hidden transform-gpu transition-opacity duration-800 ${
+        isOpening ? "pointer-events-none opacity-0" : "pointer-events-auto opacity-100"
+      }`}
+      title="Clique em qualquer lugar para pular"
+    >
+      {/* 1. Fundo de Ondas Líquidas Orgânicas nas Cores Oficiais da Marca (Café, Terracota, Rosé Gold & Blush) */}
+      <div className="absolute inset-0 bg-[#2C211D] overflow-hidden">
+        {/* Onda Líquida Orgânica 1 (Superior em Rosé Gold & Terracota) */}
+        <svg
+          className="absolute -top-24 -left-24 w-[150%] h-[70%] opacity-55 blur-2xl animate-aurora-glow transform-gpu"
+          viewBox="0 0 1200 600"
+          fill="none"
+        >
+          <path
+            d="M0,300 C300,450 600,150 900,350 C1100,480 1200,200 1300,300 L1300,0 L0,0 Z"
+            fill="url(#splash-wave-1)"
+          />
+          <defs>
+            <linearGradient id="splash-wave-1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#BA9485" stopOpacity="0.85" />
+              <stop offset="50%" stopColor="#A07365" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="#2C211D" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-      {/* 2. Painel Inferior da Cortina */}
-      <div
-        className={`absolute bottom-0 inset-x-0 h-1/2 bg-[#F6F0EB] shadow-2xl transition-transform duration-1200 ease-[cubic-bezier(0.77,0,0.175,1)] will-change-transform ${
-          isOpening ? "translate-y-full" : "translate-y-0"
-        }`}
-      />
+        {/* Onda Líquida Orgânica 2 (Central Ondulante em Blush & Rosé Gold) */}
+        <svg
+          className="absolute top-1/4 -right-24 w-[150%] h-[75%] opacity-50 blur-3xl animate-pulse transform-gpu"
+          viewBox="0 0 1200 600"
+          fill="none"
+        >
+          <path
+            d="M0,200 C350,50 650,400 950,150 C1150,0 1250,250 1400,180 L1400,600 L0,600 Z"
+            fill="url(#splash-wave-2)"
+          />
+          <defs>
+            <linearGradient id="splash-wave-2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#D8C7BC" stopOpacity="0.75" />
+              <stop offset="50%" stopColor="#BA9485" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#3A2E2B" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-      {/* 3. Halo de Luz Quente de Fundo */}
-      <div
-        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[450px] sm:size-[600px] rounded-full bg-gradient-to-r from-[#BA9485]/20 via-[#E5C9BD]/30 to-[#BA9485]/20 blur-3xl z-10 pointer-events-none transition-all duration-1000 ${
-          isOpening
-            ? "opacity-0 scale-150 blur-2xl"
-            : isRevealed
-            ? "opacity-100 scale-110 animate-glow-pulse"
-            : "opacity-0 scale-75"
-        }`}
-      />
+        {/* Onda Líquida Orgânica 3 (Inferior em Café Profundo) */}
+        <svg
+          className="absolute -bottom-24 -left-16 w-[140%] h-[60%] opacity-70 blur-2xl transform-gpu"
+          viewBox="0 0 1200 500"
+          fill="none"
+        >
+          <path
+            d="M0,150 C400,350 700,50 1000,250 C1150,350 1250,100 1300,200 L1300,500 L0,500 Z"
+            fill="url(#splash-wave-3)"
+          />
+          <defs>
+            <linearGradient id="splash-wave-3" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#443632" stopOpacity="0.95" />
+              <stop offset="60%" stopColor="#7E655B" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#2C211D" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
 
-      {/* 4. Zoom Cinematográfico Infinito + Digitação Cadenciada */}
+        {/* Vinheta Aveludada Periférica */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_20%,_#1E1614_100%)] opacity-85" />
+      </div>
+
+      {/* 2. Conteúdo Central: Animação Delicada, Lenta, Fluida e Cuidadosa em Pausas Cadenciadas */}
       <div
-        className={`absolute inset-0 flex flex-col items-center justify-center text-center p-6 z-20 will-change-transform transition-all ${
-          isOpening
-            ? "duration-800 ease-in opacity-0 scale-[1.32] blur-md"
-            : isRevealed
-            ? "duration-[5500ms] cubic-bezier(0.16,1,0.3,1) opacity-100 scale-110 blur-0"
-            : "duration-0 opacity-0 scale-[0.88] blur-xs"
+        className={`absolute inset-0 flex flex-col items-center justify-center text-center p-6 pointer-events-none transform-gpu transition-all duration-800 cubic-bezier(0.16,1,0.3,1) ${
+          isLeaping
+            ? "-translate-y-8 scale-105 opacity-0 blur-xs"
+            : "translate-y-0 scale-100 opacity-100"
         }`}
       >
-        {/* Tagline Superior com Linhas Editorial Elegantes */}
-        <div className="flex items-center gap-3 mb-4">
+        {/* Tagline Superior (Desce suavemente com desaceleração aveludada) */}
+        <div
+          className={`flex items-center gap-3.5 mb-5 overflow-hidden py-1 transition-all duration-[1200ms] cubic-bezier(0.16,1,0.3,1) transform-gpu ${
+            isTopTaglineVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-3"
+          }`}
+        >
           <span
-            className={`h-[1px] bg-gradient-to-r from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-1000 ease-out ${
-              isRevealed ? "w-10 sm:w-16 opacity-100" : "w-0 opacity-0"
+            className={`h-[1px] bg-gradient-to-r from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-[1200ms] cubic-bezier(0.16,1,0.3,1) ${
+              isTopTaglineVisible ? "w-12 sm:w-20 opacity-90" : "w-0 opacity-0"
             }`}
           />
-          <span className="text-[0.68rem] sm:text-[0.74rem] font-bold tracking-[0.34em] uppercase text-[#BA9485] flex items-center gap-1.5 drop-shadow-xs">
-            <Sparkles className="size-3.5 text-[#BA9485]" />
+          <span className="text-[0.70rem] sm:text-[0.76rem] font-bold tracking-[0.38em] uppercase text-[#F2ECE6] flex items-center gap-2 drop-shadow-[0_0_12px_rgba(186,148,133,0.5)]">
+            <Sparkles className="size-3.5 text-[#BA9485] animate-pulse" />
             PSICOLOGIA CLÍNICA & DESENVOLVIMENTO
           </span>
           <span
-            className={`h-[1px] bg-gradient-to-l from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-1000 ease-out ${
-              isRevealed ? "w-10 sm:w-16 opacity-100" : "w-0 opacity-0"
+            className={`h-[1px] bg-gradient-to-l from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-[1200ms] cubic-bezier(0.16,1,0.3,1) ${
+              isTopTaglineVisible ? "w-12 sm:w-20 opacity-90" : "w-0 opacity-0"
             }`}
           />
         </div>
 
-        {/* Nome Principal Limpo com Digitação e Brilho Metálico Warm Gold */}
-        <div className="relative inline-block py-2">
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-semibold tracking-[0.09em] drop-shadow-xs py-2 text-metallic-gold inline-flex items-center justify-center min-h-[1.25em] select-none">
-            <span>{typedText}</span>
-            {/* Cursor piscante de digitação em tom dourado editorial */}
-            <span
-              className={`inline-block w-[3px] h-[0.75em] bg-[#BA9485] ml-1.5 align-middle rounded-full transition-opacity duration-300 ${
-                isTypingComplete ? "opacity-0" : "animate-pulse opacity-100"
-              }`}
-            />
+        {/* Nome Principal (Digitação Cadenciada Elegante) */}
+        <div className="relative overflow-hidden py-3 px-6 my-1 min-h-[4rem] sm:min-h-[5.5rem] flex items-center justify-center">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-light tracking-[0.12em] drop-shadow-[0_0_30px_rgba(186,148,133,0.45)] inline-flex items-center justify-center gap-1 select-none">
+            <span className="text-[#FBF8F5]">{typedText.slice(0, 5)}</span>
+            {typedText.length > 5 && (
+              <span className="bg-gradient-to-r from-[#EAD5C5] via-[#BA9485] to-[#A07365] bg-clip-text text-transparent font-medium ml-3">
+                {typedText.slice(5)}
+              </span>
+            )}
+            {/* Cursor elegante de digitação: visível SOMENTE quando há texto sendo digitado */}
+            {typedText.length > 0 && !isTypingComplete && (
+              <span className="inline-block w-[3px] h-[0.75em] bg-[#BA9485] ml-1.5 align-middle rounded-full animate-pulse transition-opacity duration-200" />
+            )}
           </h1>
         </div>
 
-        {/* Subtítulo Inferior */}
-        <div className="flex items-center gap-3 mt-4">
+        {/* Subtítulo Inferior (Passo 3: Desliza suavemente em exatos 2 segundos) */}
+        <div
+          className={`flex items-center gap-3.5 mt-5 overflow-hidden py-1 transition-all duration-[2000ms] cubic-bezier(0.16,1,0.3,1) transform-gpu ${
+            isBottomSubtitleVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
           <span
-            className={`h-[1px] bg-gradient-to-r from-transparent to-[#BA9485] transition-all duration-1000 delay-200 ease-out ${
-              isRevealed ? "w-12 sm:w-18 opacity-100" : "w-0 opacity-0"
+            className={`h-[1px] bg-gradient-to-r from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-[2000ms] ease-out ${
+              isBottomSubtitleVisible ? "w-14 sm:w-24 opacity-80" : "w-0 opacity-0"
             }`}
           />
-          <span className="text-[0.72rem] sm:text-xs font-serif italic tracking-[0.28em] text-[#7E655B] uppercase font-medium">
+          <span className="text-[0.74rem] sm:text-xs font-serif italic tracking-[0.32em] text-[#D8C7BC] uppercase font-light">
             Excelência • Escuta • Cuidado
           </span>
           <span
-            className={`h-[1px] bg-gradient-to-l from-transparent to-[#BA9485] transition-all duration-1000 delay-200 ease-out ${
-              isRevealed ? "w-12 sm:w-18 opacity-100" : "w-0 opacity-0"
+            className={`h-[1px] bg-gradient-to-l from-transparent via-[#BA9485] to-[#BA9485] transition-all duration-[2000ms] ease-out ${
+              isBottomSubtitleVisible ? "w-14 sm:w-24 opacity-80" : "w-0 opacity-0"
             }`}
           />
         </div>
       </div>
-
     </div>
   );
 };
+
+
+
+
+
+
+
+
+
