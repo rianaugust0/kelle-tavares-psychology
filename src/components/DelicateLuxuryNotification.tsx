@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { X, MessageCircle, Sparkles } from "lucide-react";
 import { WhatsAppLink } from "./WhatsAppLink";
-import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const DelicateLuxuryNotification: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -37,7 +36,6 @@ export const DelicateLuxuryNotification: React.FC = () => {
         <WhatsAppLink
           location="delicate_corner_toast"
           event="whatsapp_corner_notification_click"
-          onClick={() => trackWhatsAppClick("corner_notification")}
           className="flex items-start gap-3 text-left"
         >
           {/* Avatar / Status Badge */}

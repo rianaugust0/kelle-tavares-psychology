@@ -20,6 +20,8 @@ export function FloatingWhatsApp() {
     serviceCategory = "infantil";
   } else if (path.includes("conteudos")) {
     pageName = "conteudos";
+  } else if (path.includes("sobre")) {
+    pageName = "sobre";
   }
 
   const url = getWhatsAppUrl(target);
@@ -30,8 +32,13 @@ export function FloatingWhatsApp() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
+        data-button-location="floating"
+        data-service-type={serviceCategory}
         onClick={() =>
           trackWhatsAppClick({
+            button_location: "floating",
+            service_type: serviceCategory,
+            page_location: typeof window !== "undefined" ? window.location.href : path,
             page: pageName,
             position: "floating",
             service: serviceCategory,

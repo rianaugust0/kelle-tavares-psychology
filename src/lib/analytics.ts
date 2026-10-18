@@ -16,17 +16,114 @@ declare global {
   }
 }
 
+let isWhatsAppListenerInitialized = false;
+let lastWhatsAppClickTime = 0;
+const WHATSAPP_DEDUP_WINDOW_MS = 500;
+
+/**
+ * Verifica se uma URL direciona para o WhatsApp (wa.me, api.whatsapp.com ou web.whatsapp.com).
+ */
+export function isWhatsAppUrl(url: string | null | undefined): boolean {
+  if (!url) return false;
+  try {
+    const parsed = new URL(url, typeof window !== "undefined" ? window.location.origin : "https://kellepsitavares.netlify.app");
+    const host = parsed.hostname.toLowerCase();
+    return (
+      host === "wa.me" ||
+      host.endsWith(".wa.me") ||
+      host === "api.whatsapp.com" ||
+      host === "web.whatsapp.com"
+    );
+  } catch {
+    const lower = url.toLowerCase();
+    return (
+      lower.includes("wa.me/") ||
+      lower.includes("api.whatsapp.com") ||
+      lower.includes("web.whatsapp.com")
+    );
+  }
+}
+
+function inferPageName(pathname: string): string {
+  if (pathname.includes("adultos")) return "adultos";
+  if (pathname.includes("infantil")) return "infantil";
+  if (pathname.includes("conteudos")) return "conteudos";
+  if (pathname.includes("sobre")) return "sobre";
+  return "home";
+}
+
+function inferServiceType(pathname: string, href?: string | null): "adultos" | "infantil" | "geral" {
+  const decodedHref = href ? decodeURIComponent(href).toLowerCase() : "";
+  if (pathname.includes("adultos") || decodedHref.includes("adultos")) return "adultos";
+  if (pathname.includes("infantil") || decodedHref.includes("infantil")) return "infantil";
+  return "geral";
+}
+
+/**
+ * Registra listener global delegando cliques em qualquer link ou botão que direcione ao WhatsApp,
+ * garantindo cobertura total sem duplicar eventos já disparados pelo componente WhatsAppLink.
+ */
+function initWhatsAppClickTracking() {
+  if (typeof window === "undefined" || typeof document === "undefined") return;
+  if (isWhatsAppListenerInitialized) return;
+  isWhatsAppListenerInitialized = true;
+
+  document.addEventListener(
+    "click",
+    (event) => {
+      const target = event.target as HTMLElement | null;
+      if (!target || typeof target.closest !== "function") return;
+
+      const clickable = target.closest("a, button") as HTMLElement | null;
+      if (!clickable) return;
+
+      const href =
+        clickable.getAttribute("href") ||
+        clickable.dataset.whatsappUrl ||
+        clickable.getAttribute("data-href");
+
+      if (!isWhatsAppUrl(href)) return;
+
+      const pathname = window.location.pathname || "/";
+      const pageName = inferPageName(pathname);
+      const buttonLocation =
+        clickable.dataset.buttonLocation ||
+        clickable.getAttribute("data-location") ||
+        clickable.id ||
+        "whatsapp_button";
+      const serviceType =
+        (clickable.dataset.serviceType as "adultos" | "infantil" | "geral" | undefined) ||
+        inferServiceType(pathname, href);
+
+      trackWhatsAppClick({
+        button_location: buttonLocation,
+        service_type: serviceType,
+        page_location: window.location.href,
+        page: pageName,
+        position: buttonLocation,
+        service: serviceType,
+      });
+    },
+    { capture: false }
+  );
+}
+
 /**
  * Inicializa a tag do Google Analytics 4 de forma idempotente (evita duplicação).
  */
 export function initGA() {
   if (typeof window === "undefined") return;
+
+  initWhatsAppClickTracking();
+
   if (document.getElementById("ga4-script")) return;
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag() {
-    window.dataLayer.push(arguments);
-  };
+  if (typeof window.gtag !== "function") {
+    window.gtag = function gtag() {
+      window.dataLayer.push(arguments);
+    };
+  }
 
   window.gtag("js", new Date());
   window.gtag("config", GA_MEASUREMENT_ID, {
@@ -57,8 +154,11 @@ export function trackPageView(url: string, title?: string) {
  * Parâmetros seguros para o evento principal de WhatsApp.
  */
 export interface WhatsAppClickParams {
-  page: "home" | "adultos" | "infantil" | "conteudos" | string;
-  position:
+  button_location?: string;
+  service_type?: "adultos" | "infantil" | "geral" | string;
+  page_location?: string;
+  page?: "home" | "adultos" | "infantil" | "conteudos" | string;
+  position?:
     | "header"
     | "header_mobile"
     | "hero"
@@ -73,26 +173,48 @@ export interface WhatsAppClickParams {
 }
 
 /**
- * Rastreia cliques que direcionam para o WhatsApp (Evento Principal).
+ * Rastreia cliques reais que direcionam para o WhatsApp (Evento Principal: whatsapp_click).
+ * Possui proteção contra disparos duplicados no mesmo clique.
  */
-export function trackWhatsAppClick(params: WhatsAppClickParams) {
+export function trackWhatsAppClick(params: WhatsAppClickParams | string) {
   if (typeof window === "undefined") return;
-  
-  // GA4 gtag event
+
+  const now = Date.now();
+  if (now - lastWhatsAppClickTime < WHATSAPP_DEDUP_WINDOW_MS) {
+    return;
+  }
+  lastWhatsAppClickTime = now;
+
+  const pathname = window.location.pathname || "/";
+  const normalizedParams: WhatsAppClickParams =
+    typeof params === "string" ? { button_location: params, position: params } : params;
+
+  const buttonLocation =
+    normalizedParams.button_location || normalizedParams.position || "whatsapp_button";
+  const serviceType =
+    normalizedParams.service_type || normalizedParams.service || inferServiceType(pathname);
+  const pageLocation = normalizedParams.page_location || window.location.href;
+  const pageName = normalizedParams.page || inferPageName(pathname);
+
+  const eventPayload = {
+    button_location: buttonLocation,
+    service_type: serviceType,
+    page_location: pageLocation,
+    page: pageName,
+    position: buttonLocation,
+    service: serviceType,
+    transport_type: "beacon",
+  };
+
   if (typeof window.gtag === "function") {
-    window.gtag("event", "whatsapp_click", {
-      page: params.page,
-      position: params.position,
-      ...(params.service ? { service: params.service } : {}),
+    window.gtag("event", "whatsapp_click", eventPayload);
+  } else {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "whatsapp_click",
+      ...eventPayload,
     });
   }
-
-  // DataLayer backup
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    event: "whatsapp_click",
-    ...params,
-  });
 }
 
 /**

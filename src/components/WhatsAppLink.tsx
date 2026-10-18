@@ -9,6 +9,7 @@ export function WhatsAppLink({
   location,
   target,
   ariaLabel,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
@@ -16,6 +17,7 @@ export function WhatsAppLink({
   target?: WhatsAppTarget;
   event?: string;
   ariaLabel?: string;
+  onClick?: () => void;
 }) {
   const routerState = useRouterState();
   const currentPath = routerState?.location?.pathname || "/";
@@ -27,6 +29,8 @@ export function WhatsAppLink({
     pageName = "infantil";
   } else if (currentPath.includes("conteudos")) {
     pageName = "conteudos";
+  } else if (currentPath.includes("sobre")) {
+    pageName = "sobre";
   }
 
   // Se o target não foi fornecido explicitamente, herda da rota atual
@@ -43,9 +47,15 @@ export function WhatsAppLink({
     <a
       href={url}
       aria-label={ariaLabel}
+      data-button-location={location}
+      data-service-type={serviceCategory}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       onClick={() => {
+        onClick?.();
         trackWhatsAppClick({
+          button_location: location,
+          service_type: serviceCategory,
+          page_location: typeof window !== "undefined" ? window.location.href : currentPath,
           page: pageName,
           position: location,
           service: serviceCategory,

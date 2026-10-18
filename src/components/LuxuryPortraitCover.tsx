@@ -3,7 +3,6 @@ import { site } from "@/config/site";
 import { WhatsAppLink } from "./WhatsAppLink";
 import { Reveal } from "./Reveal";
 import { MessageCircle, ArrowRight, ShieldCheck, HeartHandshake } from "lucide-react";
-import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const LuxuryPortraitCover: React.FC = () => {
   return (
@@ -67,7 +66,6 @@ export const LuxuryPortraitCover: React.FC = () => {
                 location="luxury_portrait_cover_mobile"
                 event="whatsapp_luxury_cover_mobile_click"
                 target="home"
-                onClick={() => trackWhatsAppClick("luxury_portrait_cover_mobile")}
                 className="group relative overflow-hidden flex items-center justify-center gap-2.5 bg-[#BA9485] hover:bg-[#a78173] text-[#1C1513] w-full py-3.5 text-[0.72rem] font-bold tracking-[0.14em] uppercase rounded-xs transition-all shadow-lg active:scale-[0.98]"
               >
                 <MessageCircle className="size-4 text-[#1C1513]" />
@@ -146,7 +144,6 @@ export const LuxuryPortraitCover: React.FC = () => {
                   location="luxury_portrait_cover_desktop"
                   event="whatsapp_luxury_cover_click"
                   target="home"
-                  onClick={() => trackWhatsAppClick("luxury_portrait_cover_desktop")}
                   className="group relative overflow-hidden inline-flex items-center justify-center gap-3 bg-[#BA9485] hover:bg-[#a78173] text-[#1C1513] px-8 py-4 text-[0.74rem] font-bold tracking-[0.16em] uppercase rounded-xs transition-all duration-300 shadow-xl hover:shadow-2xl active:scale-[0.98]"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
