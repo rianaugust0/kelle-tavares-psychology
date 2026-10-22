@@ -1,6 +1,5 @@
 import { Reveal } from "./Reveal";
 import { WhatsAppLink } from "./WhatsAppLink";
-import { TranslucentLuxuryMarquee } from "./TranslucentLuxuryMarquee";
 import { TranslucentSilkWaves } from "./TranslucentSilkWaves";
 import { User, Baby, ArrowRight, Sparkles } from "lucide-react";
 import { trackAdultServiceClick, trackChildServiceClick } from "@/lib/analytics";
@@ -8,9 +7,6 @@ import { trackAdultServiceClick, trackChildServiceClick } from "@/lib/analytics"
 export function CinematicProfileSelector() {
   return (
     <>
-      {/* 🎞️ Marquee Ticker Editorial Infinito de Vidro Translúcido */}
-      <TranslucentLuxuryMarquee />
-
       <section className="relative bg-[#F6F0EB] py-12 lg:py-16 overflow-hidden border-t border-[#D9C8BC]/40">
         {/* 🎐 Ondas de Luz Translúcida Fluida no Fundo */}
         <TranslucentSilkWaves />
@@ -70,7 +66,7 @@ export function CinematicProfileSelector() {
               </WhatsAppLink>
             </Reveal>
 
-            {/* Card 2: Acompanhamento Infantil */}
+            {/* Card 2: Terapia Infanto Juvenil */}
             <Reveal direction="right" delay={180}>
               <WhatsAppLink
                 location="cinematic_selector_infantil"
@@ -92,7 +88,7 @@ export function CinematicProfileSelector() {
                   </div>
 
                   <h3 className="font-serif text-[1.6rem] sm:text-[1.8rem] font-semibold text-[#3A2E2B] leading-snug group-hover:text-[#A07365] transition-colors">
-                    Acompanhamento Infantil
+                    Terapia Infanto Juvenil
                   </h3>
                   <p className="text-[0.85rem] leading-relaxed text-[#6E5F57] mt-2 font-sans">
                     Desenvolvimento infantil, ABA, acompanhamento para crianças neurodivergentes e suporte familiar.

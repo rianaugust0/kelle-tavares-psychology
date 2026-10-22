@@ -37,7 +37,7 @@ export function About() {
                 Sou psicóloga formada pela FacUnicamps, dedicada a oferecer um espaço seguro, acolhedor e técnico para adultos e crianças compreenderem seus sentimentos e viverem com mais equilíbrio.
               </p>
               <p>
-                Com especializações em <strong className="font-bold text-[#3A2E2B]">Análise do Comportamento Aplicada (ABA)</strong> e <strong className="font-bold text-[#3A2E2B]">Neuropsicologia</strong>, minha prática combina rigor científico com um olhar atento à história única de cada pessoa.
+                Com especializações em <strong className="font-bold text-[#3A2E2B]">Terapia Cognitiva Comportamental</strong> e <strong className="font-bold text-[#3A2E2B]">Neuropsicologia</strong>, minha prática combina rigor científico com um olhar atento à história única de cada pessoa.
               </p>
             </div>
 
@@ -124,7 +124,7 @@ export function About() {
                 </div>
                 <div>
                   <p className="text-[0.6rem] font-bold uppercase tracking-wider text-[#8E7D76]">ESPECIALIDADE</p>
-                  <p className="text-[0.78rem] font-bold text-[#3A2E2B]">Adultos & ABA Infantil</p>
+                  <p className="text-[0.78rem] font-bold text-[#3A2E2B]">Adultos e Infanto Juvenil</p>
                 </div>
               </div>
 

@@ -123,7 +123,7 @@ export function Services() {
         {/* Área de Conteúdo da Aba Selecionada */}
         <div key={activeTab.id} className="grid items-center gap-12 lg:grid-cols-[44fr_56fr] lg:gap-16 animate-in fade-in zoom-in-95 duration-500">
           
-          {/* Coluna da Esquerda: Card da Foto com Etiqueta sobreposta no Rodapé */}
+          {/* Coluna da Esquerda: Card da Foto */}
           <Reveal direction="left" delay={120} className="flex justify-center lg:justify-start">
             <div className="relative w-full max-w-[380px] sm:max-w-[420px] rounded-2xl overflow-hidden border border-[#D9C8BC] bg-white shadow-xl group glass-sweep">
               <img
@@ -133,16 +133,6 @@ export function Services() {
                 height={1024}
                 className="w-full h-auto object-cover aspect-[4/5] block transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               />
-              
-              {/* Barra de Legenda Inferior Sobreposta */}
-              <div className="absolute inset-x-3 bottom-3 bg-white/95 backdrop-blur-md px-4 py-3 rounded-xl border border-[#EFE6DF] flex items-center justify-between shadow-md transition-transform duration-300 group-hover:translate-y-[-2px]">
-                <span className="text-[0.75rem] font-bold text-[#3A2E2B]">
-                  {activeTab.badgeLabel}
-                </span>
-                <span className="text-[0.68rem] font-bold tracking-wider uppercase text-[#8E7D76]">
-                  CRP {site.crp}
-                </span>
-              </div>
             </div>
           </Reveal>
 
